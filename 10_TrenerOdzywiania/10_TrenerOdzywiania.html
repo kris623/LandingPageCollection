@@ -181,7 +181,7 @@
         #hero {
             min-height: 100vh;
             background: linear-gradient(135deg, 
-                rgba(46, 125, 50, 0.8), 
+                rgba(0, 0, 0, 0.8), 
                 rgba(27, 94, 32, 0.9)),
                 url('https://cdn.pixabay.com/photo/2017/06/09/16/39/carrots-2387394_1280.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -239,7 +239,7 @@
             margin-bottom: 0.3rem; /* Mniejszy margines */
             font-weight: 700;
             line-height: 1.2;
-            color: white;
+            color: #FFD700; /* Changed to gold */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             animation: fadeInDown 0.8s ease-out 0.2s both;
         }
@@ -2021,7 +2021,7 @@
         const animateStats = () => {
             const stats = document.querySelectorAll('.stat-number');
             stats.forEach(stat => {
-                const target = parseInt(stat.getAttribute('data-target'));
+                const target = parseInt(stat.getAttribute('data-value')); // Zmiana z 'data-target' na 'data-value'
                 const duration = 2000; // 2 seconds
                 const increment = target / (duration / 16); // 60fps
                 let current = 0;
@@ -2029,10 +2029,10 @@
                 const updateCount = () => {
                     if (current < target) {
                         current += increment;
-                        stat.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+                        stat.textContent = Math.floor(current) + (stat.getAttribute('data-value') === '98' ? '%' : '+');
                         requestAnimationFrame(updateCount);
                     } else {
-                        stat.textContent = target + (target === 98 ? '%' : '+');
+                        stat.textContent = target + (stat.getAttribute('data-value') === '98' ? '%' : '+');
                     }
                 };
 
@@ -2056,7 +2056,7 @@
 
         // Zaktualizowany kod nawigacji
 
-        const navLinks = document.querySelector('nav ul');
+        const navLinks = document.querySelectorAll('nav ul li a');
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {

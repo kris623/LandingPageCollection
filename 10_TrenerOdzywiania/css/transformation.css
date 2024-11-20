@@ -1,0 +1,308 @@
+/* Transformations Section Styles */
+#transformations {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.transformations-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.transformations-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.transformations-header h2 {
+    font-size: 2.5rem;
+    color: #2E7D32;
+    margin-bottom: 1rem;
+    position: relative;
+    display: inline-block;
+}
+
+.transformations-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.transformations-header p {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 2rem auto 0;
+}
+
+/* Gallery Grid */
+.transformation-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.transformation-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease;
+    cursor: pointer;
+    aspect-ratio: 3/4;
+}
+
+.transformation-item:hover {
+    transform: translateY(-10px);
+}
+
+.transformation-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.transformation-item:hover .transformation-image {
+    transform: scale(1.05);
+}
+
+.transformation-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(
+        to top,
+        rgba(46, 125, 50, 0.9) 0%,
+        rgba(46, 125, 50, 0.7) 50%,
+        transparent 100%
+    );
+    padding: 2rem 1.5rem;
+    color: white;
+    transform: translateY(70%); /* Changed from 100% to show part of the overlay */
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    opacity: 0.9;
+}
+
+.transformation-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.transformation-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.transformation-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #4CAF50;
+}
+
+.transformation-cta {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.transformation-button {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.transformation-button:hover {
+    background: #43A047;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
+}
+
+.transformation-button.secondary {
+    background: transparent;
+    border: 2px solid #4CAF50;
+    color: #4CAF50;
+    margin-left: 1rem;
+}
+
+.transformation-button.secondary:hover {
+    background: #4CAF50;
+    color: white;
+}
+
+.transformation-item:hover .transformation-overlay {
+    transform: translateY(0);
+}
+
+.transformation-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.transformation-details {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Progress Indicator */
+.progress-indicator {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    gap: 1rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #4CAF50;
+    width: var(--progress, 0%);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Before/After Labels */
+.transformation-labels {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 2;
+}
+
+.label {
+    background: rgba(46, 125, 50, 0.9);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+}
+
+/* Animation Effects */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.transformation-item {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.transformation-item:nth-child(1) { animation-delay: 0.2s; }
+.transformation-item:nth-child(2) { animation-delay: 0.4s; }
+.transformation-item:nth-child(3) { animation-delay: 0.6s; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .transformation-gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #transformations {
+        padding: 4rem 0;
+    }
+
+    .transformations-header h2 {
+        font-size: 2rem;
+    }
+
+    .transformation-gallery {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 2rem auto 0;
+    }
+
+    .transformation-item {
+        aspect-ratio: 16/9;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .transformation-item,
+    .transformation-image,
+    .transformation-overlay {
+        animation: none;
+        transition: none;
+    }
+}
+
+/* Print Styles */
+@media print {
+    #transformations {
+        background: none;
+        padding: 1rem 0;
+    }
+
+    .transformation-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .transformation-overlay {
+        position: static;
+        background: none;
+        color: black;
+        padding: 1rem 0;
+        transform: none;
+    }
+
+    .transformation-item {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
