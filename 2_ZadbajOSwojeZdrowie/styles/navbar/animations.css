@@ -1,0 +1,17 @@
+.navbar-end .navbar-item::after {
+    content: '';
+    position: absolute;
+    bottom: calc(50% - 25px);
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+}
+
+.navbar-end .navbar-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}

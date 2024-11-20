@@ -1,0 +1,609 @@
+/* ------------------------------
+   1. Grid Layout
+------------------------------ */
+/* Kontener kart */
+.elements-display {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: calc(100vh - 76px);
+    margin-top: 76px;
+    display: grid;
+    grid-template-areas: 
+        "earth water"
+        "fire air";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0;
+    padding: 2rem;
+    z-index: 1;
+    overflow: hidden;
+    perspective: 2000px;
+}
+
+/* Style dla paneli */
+
+/* Dostosowanie obszarów siatki */
+.earth-panel { grid-area: earth; }
+.water-panel { grid-area: water; }
+.fire-panel { grid-area: fire; }
+.air-panel { grid-area: air; }
+.elements-display:hover
+{
+    /* perspective: 1000px; */
+}
+/* ------------------------------
+   2. Element Panel Base
+------------------------------ */
+.element-panel {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-left: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    transform: translateZ(0);
+    cursor: pointer;
+    margin: 0.1rem;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.element-panel::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--element-color), transparent);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+/* Usuwamy niepotrzebne bordery */
+.earth-panel, .water-panel {
+    border-top: none;
+}
+
+.earth-panel, .fire-panel {
+    border-left: none;
+}
+/* ------------------------------
+   3. Panel Hover Effects
+------------------------------ */
+.elements-display:has(.element-panel:hover) .element-panel:not(:hover) {
+    transform: scale(0.95);
+    filter: brightness(0.6) blur(2px);
+    opacity: 0.7;
+}
+
+.element-panel:hover {
+    transform: scale(1.05) !important;
+    z-index: 2000 !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Dodanie stylów dla elementów wewnętrznych, aby zachować efekt 3D */
+.element-header,
+.element-attributes,
+.element-description,
+.element-button {
+    transform: translateZ(50px);
+}
+
+.element-panel:hover::before {
+    opacity: 1;
+}
+
+.element-panel:hover .element-content {
+    /* background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.5) 0%,
+        rgba(0, 0, 0, 0.8) 100%
+    ); */
+}
+
+.element-panel:not(:hover) {
+    transition: all 0.5s ease;
+}
+
+/* ------------------------------
+   4. Content Structure
+------------------------------ */
+.element-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2.5rem;
+    transform-style: preserve-3d;
+    transform: translateZ(30px);
+    transition: transform 0.3s ease;
+}
+
+/* Dekoracyjny róg */
+.element-content::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.element-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.9) contrast(1);
+    opacity: 0.5;
+    transition: opacity 0.5s ease; /* Dodane płynne przejście */
+
+}
+.element-panel:hover .element-video{
+    opacity: 1;
+}
+/* ------------------------------
+   5. Element Header
+------------------------------ */
+/* Układ nagłówka */
+.element-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem; /* Stały odstęp od opisu */
+}
+
+.element-icon {
+    flex-shrink: 0; /* Zapobiega zmniejszaniu się ikony */
+}
+
+.element-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: #fff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    line-height: 1.2;
+}
+
+.element-title-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* ------------------------------
+   6. Element Icon
+------------------------------ */
+.element-icon {
+    width: 48px;
+    height: 48px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.element-icon img {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    object-fit: contain;
+    filter: brightness(1.2);
+    transform: scale(1.2);
+}
+
+.element-panel:hover .element-icon {
+    transform: scale(1.3);
+    box-shadow: 0 0 15px var(--element-color);
+    transition: all 0.3s ease-in;
+}
+
+/* ------------------------------
+   7. Attributes
+------------------------------ */
+/* Kontener tagów - teraz poza headerem */
+.element-attributes {
+    position: absolute;
+    top: 1rem; /* Dopasowane do paddingu kontenera */
+    right: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    justify-content: flex-end;
+    max-width: 100%;
+}
+
+/* Style tagów */
+.attribute {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(4px);
+    white-space: nowrap;
+}
+
+/* ------------------------------
+   8. Description
+------------------------------ */
+.element-expanded {
+    margin-top: auto; /* Przesuwa sekcję na dół karty */
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.element-description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    max-width: 90%; /* Zapobiega zbyt długim liniom */
+}
+
+/* ------------------------------
+   9. Button Styles
+------------------------------ */
+/* Podstawowy styl przycisku */
+.element-button {
+    align-self: flex-start; /* Wyrównuje przycisk do lewej */
+    padding: 0.8rem 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* Kolorowanie przycisków przy najechaniu na panel */
+.earth-panel:hover .element-button {
+    background: rgba(45, 74, 29, 0.8);
+    border-color: rgb(61, 122, 35);
+}
+
+.water-panel:hover .element-button {
+    background: rgba(26, 75, 110, 0.8);
+    border-color: rgb(44, 127, 184);
+}
+
+.fire-panel:hover .element-button {
+    background: rgba(139, 37, 0, 0.8);
+    border-color: rgb(230, 57, 0);
+}
+
+.air-panel:hover .element-button {
+    background: rgba(74, 102, 112, 0.8);
+    border-color: rgb(135, 165, 181);
+}
+
+.aether-panel:hover .element-button {
+    background: rgba(42, 27, 61, 0.8);
+    border-color: rgb(102, 51, 153);
+}
+
+
+
+/* ------------------------------
+   10. Element-Specific Styles
+------------------------------ */
+
+.earth-panel {
+    grid-area: earth;
+    --element-symbol: "⊕";
+}
+
+.water-panel {
+    grid-area: water;
+    --element-symbol: "⋍";
+}
+
+.water-panel:hover {
+    box-shadow: 0 15px 30px rgba(44, 127, 184, 0.3);
+}
+
+.water-panel .element-content::after {
+    content: '~';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    opacity: 0.5;
+}
+
+.fire-panel {
+    grid-area: fire;
+    --element-symbol: "∆";
+}
+
+.fire-panel:hover {
+    box-shadow: 0 15px 30px rgba(230, 57, 0, 0.3);
+}
+
+.air-panel {
+    grid-area: air;
+    --element-symbol: "⟰";
+}
+
+.aether-panel {
+    grid-area: aether;
+    --element-symbol: "✴";
+    height: 250px;
+}
+
+/* ------------------------------
+   11. Media Queries
+------------------------------ */
+@media (max-width: 1600px) {
+    .element-title {
+        font-size: 1rem;
+    }
+
+    /* .element-attributes {
+        gap: 0.5rem;
+    } */
+
+    /* .attribute {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    } */
+}
+
+@media (max-width: 1200px) {
+    .elements-display {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 76px);
+        margin-top: 76px;
+        padding: 1rem;
+        perspective: 1000px;
+    }
+
+   .element-panel {
+        min-height: 400px; /* Minimalna wysokość na mniejszych ekranach */
+        margin: 0.25rem;
+    }
+    .element-panel:hover {
+        transform: scale(1.03) !important; /* Jeszcze mniejsza skala na mniejszych ekranach */
+    }
+
+    .elements-display {
+        width: 100%;
+        transform: none;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+
+    .element-content {
+        padding: 1.8rem;
+    }
+    .element-title {
+        font-size: 1.5rem;
+    }
+
+    .element-description {
+        font-size: 0.85rem;
+    }
+
+    .element-button {
+        padding: 0.7rem 1.8rem;
+    }
+    .element-symbol {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    .elements-display {
+        padding: 0.5rem;
+        grid-template-areas: 
+            "earth"
+            "water"
+            "fire"
+            "air";
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        width: 100%;
+        perspective: 800px;
+    }
+    
+    .element-panel:hover {
+        transform: scale(1.02) !important; /* Minimalna skala na mobilnych */
+    }
+    
+    .element-panel {
+        border: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .air-panel {
+        border-bottom: none;
+    }
+    .earth-panel {
+        height: 250px;
+        width: 100%;
+    }
+    .water-panel {
+        height: 250px;
+        width: 100%;
+    }
+    .fire-panel {
+        height: 250px;
+        width: 100%;
+    }
+    .air-panel {
+        height: 250px;
+        width: 100%;
+    }
+    .element-header {
+        gap: 0.8rem;
+    }
+
+    .element-attributes {
+        top: 15px;
+        right: 15px;
+    }
+
+    .attribute {
+        font-size: 0.65rem;
+        padding: 0.15rem 0.5rem;
+    }
+
+    .element-title {
+        font-size: 1.4rem;
+    }
+
+    .element-button {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .elements-display {
+        padding: 0.5rem;
+    }
+
+    .element-content {
+        padding: 0.6rem;
+    }
+
+    .element-title {
+        font-size: 1.1rem;
+    }
+
+    .element-symbol {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+
+    .attribute {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+}
+
+/* ---------------
+    Custom 
+----------------*/
+/* Specyficzne style dla każdego elementu przy hover */
+/* Efekty hover dla tagów po najechaniu na panel */
+.earth-panel:hover .attribute {
+    background: rgba(45, 74, 29, 0.3);
+    border-color: rgba(61, 122, 35, 0.8);
+    border-left-color: rgb(61, 122, 35);
+    box-shadow: 0 0 10px rgba(61, 122, 35, 0.2);
+}
+
+.water-panel:hover .attribute {
+    background: rgba(26, 75, 110, 0.3);
+    border-color: rgba(44, 127, 184, 0.8);
+    border-left-color: rgb(44, 127, 184);
+    box-shadow: 0 0 10px rgba(44, 127, 184, 0.2);
+}
+
+.fire-panel:hover .attribute {
+    background: rgba(139, 37, 0, 0.3);
+    border-color: rgba(230, 57, 0, 0.8);
+    border-left-color: rgb(230, 57, 0);
+    box-shadow: 0 0 10px rgba(230, 57, 0, 0.2);
+}
+
+.air-panel:hover .attribute {
+    background: rgba(74, 102, 112, 0.3);
+    border-color: rgba(135, 165, 181, 0.8);
+    border-left-color: rgb(135, 165, 181);
+    box-shadow: 0 0 10px rgba(135, 165, 181, 0.2);
+}
+
+.aether-panel:hover .attribute {
+    background: rgba(42, 27, 61, 0.3);
+    border-color: rgba(102, 51, 153, 0.8);
+    border-left-color: rgb(102, 51, 153);
+    box-shadow: 0 0 10px rgba(102, 51, 153, 0.2);
+}
+
+
+
+
+
+/* Style tagów dla poszczególnych żywiołów */
+/* Style tagów dla poszczególnych żywiołów */
+.earth-panel .attribute {
+    border-left: 2px solid rgba(61, 122, 35, 0.6);
+}
+
+.water-panel .attribute {
+    border-left: 2px solid rgba(44, 127, 184, 0.6);
+}
+
+.fire-panel .attribute {
+    border-left: 2px solid rgba(230, 57, 0, 0.6);
+}
+
+.air-panel .attribute {
+    border-left: 2px solid rgba(135, 165, 181, 0.6);
+}
+
+.aether-panel .attribute {
+    border-left: 2px solid rgba(102, 51, 153, 0.6);
+}
+/* Dodatkowy efekt hover na samym tagu */
+.element-panel:hover .attribute:hover {
+    transform: translateY(-4px);
+    cursor: default;
+}
+
+/* Animacja pojawiania się tagów po najechaniu na panel */
+.element-panel .attribute {
+    transform: translateX(0);
+    opacity: 0.9;
+    transition: all 0.3s ease;
+}
+
+.element-panel:hover .attribute {
+    opacity: 1;
+}
+
+/* Opóźnione pojawianie się kolejnych tagów */
+.element-panel:hover .attribute:nth-child(1) { transition-delay: 0s; }
+.element-panel:hover .attribute:nth-child(2) { transition-delay: 0.05s; }
+.element-panel:hover .attribute:nth-child(3) { transition-delay: 0.1s; }

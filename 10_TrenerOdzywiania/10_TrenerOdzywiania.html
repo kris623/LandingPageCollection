@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profesjonalny Trener Odżywiania</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        /* Reset i podstawowe style */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(46, 125, 50, 0.95);
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .nav-scroll {
+            background-color: rgba(46, 125, 50, 0.98);
+            padding: 0.7rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Ulepszony hamburger */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 2px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { top: 18px; }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                background: rgba(46, 125, 50, 0.98);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                gap: 2rem;
+            }
+
+            nav ul.active {
+                right: 0;
+            }
+
+            nav ul li {
+                margin: 1.5rem 0;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Enhanced Hero Section */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, 
+                rgba(46, 125, 50, 0.8), 
+                rgba(27, 94, 32, 0.9)),
+                url('https://cdn.pixabay.com/photo/2017/06/09/16/39/carrots-2387394_1280.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            transform: translateZ(-1px) scale(2);
+            z-index: -1;
+        }
+
+        #hero .container {
+            display: grid;
+            grid-template-columns: 45% 55%; /* Zmienione proporcje */
+            gap: 2rem;
+            align-items: center;
+            min-height: 90vh;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            max-width: 1400px; /* Zwiększona maksymalna szerokość */
+        }
+
+        .hero-content {
+            text-align: left;
+            padding: 1.5rem;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            backdrop-filter: blur(8px);
+            animation: fadeInSlideUp 1.2s ease-out;
+            color: white;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem; /* Jeszcze mniejszy odstęp */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.3rem; /* Mniejszy margines */
+            font-weight: 700;
+            line-height: 1.2;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 0.7rem; /* Mniejszy margines */
+            opacity: 0.95;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeInDown 0.8s ease-out 0.4s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        .cta-button {
+            padding: 1.2rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap; /* Dodana właściwość */
+            display: inline-flex; /* Dodana właściwość */
+            align-items: center; /* Dodana właściwość */
+            justify-content: center; /* Dodana właściwość */
+        }
+
+        .cta-button.primary {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem; /* Zmniejszony gap z 1.5rem */
+            margin-top: 2rem; /* Zmniejszony margin-top z 3rem */
+            position: relative;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem; /* Zmniejszony padding z 1.5rem */
+            border-radius: 12px; /* Zmniejszony border-radius */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.2rem; /* Zmniejszony rozmiar czcionki z 2.5rem */
+            font-weight: 800;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.3rem; /* Dodany mały margines na dole */
+        }
+
+        .stat-label {
+            font-size: 0.85rem; /* Zmniejszony rozmiar czcionki */
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.2;
+        }
+
+        .hero-image-container {
+            position: relative;
+            height: 500px;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transform: translateZ(20px);
+            animation: fadeInSlideLeft 1.2s ease-out;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image-container:hover img {
+            transform: scale(1.05);
+        }
+
+        .hero-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(46, 125, 50, 0.3),
+                transparent 70%
+            );
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-item {
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero-image-container {
+                height: 400px;
+                margin: 0 auto;
+                max-width: 600px;
+            }
+        }
+
+        /* Sticky Navigation Enhancement */
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(46, 125, 50, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        /* Additional Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 992px) {
+            #hero .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+                order: -1;
+            }
+
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #hero h1 {
+                font-size: 2.5rem;
+            }
+
+            #hero p {
+                font-size: 1.1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Sekcje */
+        section {
+            padding: 4rem 0;
+        }
+
+        /* O mnie */
+        #about {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+#about::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 50%);
+    animation: rotate 30s linear infinite;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+}
+
+.section-header {
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    color: #2E7D32;
+    margin-bottom: 1rem;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.about-intro {
+    font-size: 1.25rem;
+    color: #2E7D32;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.about-text {
+    margin-bottom: 2rem;
+}
+
+.about-text p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+}
+
+.about-list {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.about-list li {
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.about-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.certifications {
+    background: rgba(76, 175, 80, 0.05);
+    padding: 2.5rem;
+    border-radius: 20px;
+    margin-top: 2.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(76, 175, 80, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.certifications h3 {
+    color: #2E7D32;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    position: relative;
+}
+
+.certifications h3::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: #4CAF50;
+    border-radius: 2px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.cert-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(76, 175, 80, 0.1);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.cert-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(76, 175, 80, 0.15);
+}
+
+.cert-icon-wrapper {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 12px;
+}
+
+.cert-icon {
+    font-size: 1.8rem;
+    z-index: 1;
+}
+
+.cert-icon-glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+    animation: pulse 2s infinite;
+    border-radius: 12px;
+}
+
+.cert-content {
+    flex: 1;
+}
+
+.cert-content h4 {
+    color: #2E7D32;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.cert-content p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.cert-date {
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #2E7D32;
+    font-weight: 500;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 0.7; }
+}
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cert-item {
+        padding: 1.2rem;
+    }
+    
+    .cert-content h4 {
+        font-size: 1.1rem;
+    }
+}
+
+.certifications {
+    background: rgba(76, 175, 80, 0.05);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+.certifications h3 {
+    color: #2E7D32;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.cert-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.cert-item:hover {
+    transform: translateY(-5px);
+}
+
+.cert-icon {
+    font-size: 1.5rem;
+}
+
+.about-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: perspective(1000px) rotateY(-5deg);
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+.about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.about-image:hover img {
+    transform: scale(1.05);
+}
+
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-image {
+        order: -1;
+        max-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    #about {
+        padding: 4rem 0;
+    }
+
+    .section-header h2 {
+        font-size: 2rem;
+    }
+
+    .about-intro {
+        font-size: 1.1rem;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+}
+        /* Oferta */
+        .offer-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .offer-item {
+            flex-basis: calc(33.333% - 20px);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .offer-item:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Transformacje */
+        .transformation-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .transformation-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .transformation-item img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .transformation-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Metodologia pracy */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #4CAF50;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -17px;
+            background-color: white;
+            border: 4px solid #4CAF50;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .right::after {
+            left: -16px;
+        }
+
+        /* Formularz kontaktowy */
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Stopka */
+        footer {
+            background-color: #2E7D32;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .social-icons {
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+        }
+
+        /* Responsywność */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .offer-item {
+                flex-basis: 100%;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 15px;
+            }
+
+            .left::after, .right::after {
+                left: 15px;
+            }
+
+            .right {
+                left: 0%;
+            }
+
+            nav .container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
+        /* Przyciski CTA */
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+        }
+
+        .cta-button.primary {
+            background-color: #4CAF50;
+            color: white;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .cta-button.primary:hover {
+            background-color: #43A047;
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.6; }
+        }
+
+        @media (max-width: 992px) {
+            #hero .container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-image-container {
+                height: 400px;
+                order: -1;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @keyframes fadeInSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInSlideLeft {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Dodaj obsługę parallax przy scrollowaniu */
+        @media (min-width: 768px) {
+            #hero {
+                background-attachment: fixed;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            #hero .container {
+                grid-template-columns: 1fr;
+                max-width: 900px;
+            }
+
+            .hero-content {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                padding: 1.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Dodaj margines dla głównej zawartości, aby nie była schowana pod nawigacją */
+        main {
+            margin-top: 0; /* Zmiana z 80px na 0 */
+        }
+
+        /* Ulepszona sekcja hero */
+        #hero {
+            min-height: 100vh;
+            padding-top: 0; /* Usunięty padding-top */
+            margin-top: 0; /* Usunięty margin-top */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, 
+                rgba(46, 125, 50, 0.9), 
+                rgba(27, 94, 32, 0.95)),
+                url('https://cdn.pixabay.com/photo/2017/06/09/16/39/carrots-2387394_1280.jpg') no-repeat center center;
+            background-size: cover;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); /* Dodaje dynamiczny kształt */
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 10%, transparent 60%);
+            animation: rotate 30s linear infinite;
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 80px 2rem 2rem 2rem; /* Dodany padding-top równy wysokości nawigacji */
+            max-width: 1400px;
+            min-height: 100vh;
+            margin: auto;
+        }
+
+        .hero-content {
+            position: relative;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transform: perspective(1000px) rotateY(0deg);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-content:hover {
+            transform: perspective(1000px) rotateY(2deg);
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, #fff, #4CAF50);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .hero-content h1::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 80px;
+            height: 4px;
+            background: #4CAF50;
+            border-radius: 2px;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-image-container {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            transform: perspective(1000px) rotateY(-5deg);
+            transition: all 0.5s ease;
+        }
+
+        .hero-image-container:hover {
+            transform: perspective(1000px) rotateY(0deg) translateY(-10px);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem; /* Zmniejszony gap z 1.5rem */
+            margin-top: 2rem; /* Zmniejszony margin-top z 3rem */
+            position: relative;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem; /* Zmniejszony padding z 1.5rem */
+            border-radius: 12px; /* Zmniejszony border-radius */
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.2rem; /* Zmniejszony rozmiar czcionki z 2.5rem */
+            font-weight: 800;
+            color: #4CAF50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 0.3rem; /* Dodany mały margines na dole */
+        }
+
+        .stat-label {
+            font-size: 0.85rem; /* Zmniejszony rozmiar czcionki */
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.2;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .cta-button {
+            padding: 1.2rem 2.8rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap; /* Dodana właściwość */
+            display: inline-flex; /* Dodana właściwość */
+            align-items: center; /* Dodana właściwość */
+            justify-content: center; /* Dodana właściwość */
+        }
+
+        .cta-button.primary {
+            background: linear-gradient(45deg, #4CAF50, #45a049);
+            border: none;
+            color: white;
+        }
+
+        .cta-button.primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .cta-button.primary:hover::before {
+            left: 100%;
+        }
+
+        @media (max-width: 992px) {
+            #hero .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 4rem 2rem;
+                padding-top: 100px; /* Większy padding na mobile */
+                min-height: auto;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .hero-content h1::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-image-container {
+                transform: none;
+                margin-top: 2rem;
+            }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .certifications-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 kolumny na desktopie */
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.cert-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    align-items: start;
+}
+
+.cert-icon-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 0;
+}
+
+.cert-icon {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.cert-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(45deg, #ff4081, #f50057);
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.cert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.cert-content h4 {
+    font-size: 1.1rem;
+    color: #2E7D32;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.cert-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #666;
+    margin: 0;
+}
+
+.cert-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+}
+
+.cert-date {
+    background: rgba(76, 175, 80, 0.1);
+    color: #2E7D32;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-weight: 500;
+}
+
+.cert-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.cert-skills span {
+    background: rgba(76, 175, 80, 0.08);
+    color: #2E7D32;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+@media (max-width: 1200px) {
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cert-item {
+        padding: 1rem;
+    }
+}
+.cert-item {
+    display: grid;
+    grid-template-areas:
+        "icon title badge"
+        "icon description description"
+        "icon details details"
+        "skills skills skills";
+    grid-template-columns: auto 1fr auto;
+    gap: 0.8rem;
+    padding: 1.2rem;
+    background: white;
+    border-radius: 15px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-icon-wrapper {
+    grid-area: icon;
+    align-self: start;
+    margin-right: 0.5rem;
+}
+
+.cert-content {
+    grid-area: description;
+}
+
+.cert-content h4 {
+    grid-area: title;
+    font-size: 1.2rem;
+    margin: 0;
+    padding-right: 1rem;
+}
+
+.cert-badge {
+    grid-area: badge;
+    position: static;
+    align-self: center;
+    margin-left: auto;
+}
+
+.cert-details {
+    grid-area: details;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.cert-skills {
+    grid-area: skills;
+    margin: 0;
+    padding-top: 0.5rem;
+    border-top: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.cert-skills span:hover {
+    background: #4CAF50;
+    color: white;
+}
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cert-item {
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    display: flex;
+    gap: 1rem;
+    position: relative;
+}
+
+.cert-icon-wrapper {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+}
+
+.cert-main-content {
+    flex: 1;
+    min-width: 0; /* Zapobiega przepełnieniu */
+}
+
+.cert-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2E7D32;
+    margin: 0;
+}
+
+.cert-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    background: linear-gradient(45deg, #ff4081, #f50057);
+    color: white;
+    align-self: flex-start;
+}
+
+.cert-description {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.cert-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-date {
+    background: rgba(76, 175, 80, 0.1);
+    color: #2E7D32;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+}
+
+.cert-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.cert-tag {
+    background: rgba(76, 175, 80, 0.05);
+    color: #2E7D32;
+    padding: 0.2rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.75rem;
+}
+
+/* Responsywność */
+@media (max-width: 1200px) {
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav id="navbar">
+            <div class="container">
+                <a href="#" class="logo">Trener Odżywiania</a>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul>
+                    <li><a href="#about">O mnie</a></li>
+                    <li><a href="#offer">Oferta</a></li>
+                    <li><a href="#transformations">Transformacje</a></li>
+                    <li><a href="#methodology">Metodologia</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Transformacja przez odżywianie</h1>
+                    <p>Rozpocznij swoją drogę do zdrowszego życia z profesjonalnym wsparciem. Spersonalizowane plany żywieniowe i skuteczne strategie, które pomogą Ci osiągnąć Twoje cele.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="cta-button primary">Rozpocznij teraz</a>
+                        <a href="#about" class="cta-button secondary">Dowiedz się więcej</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number" data-value="500">0</div>
+                            <div class="stat-label">Zadowolonych klientów</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-value="10">0</div>
+                            <div class="stat-label">Lat doświadczenia</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number" data-value="98">0</div>
+                            <div class="stat-label">Skuteczność</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image-container">
+                    <img src="https://cdn.pixabay.com/photo/2017/01/29/21/16/nurse-2019420_1280.jpg" 
+                         alt="Profesjonalny Trener Odżywiania"
+                         loading="eager">
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-content">
+                <div class="section-header">
+                    <h2>O mnie</h2>
+                    <div class="underline"></div>
+                </div>
+                <p class="about-intro">Jestem certyfikowanym trenerem odżywiania z 10-letnim doświadczeniem w branży wellness i dietetyki.</p>
+                <div class="about-text">
+                    <p>Moja pasja do zdrowego stylu życia i pomagania innym zaczęła się od własnej transformacji. Dziś, jako ekspert w dziedzinie żywienia, pomagam ludziom osiągać ich cele zdrowotne poprzez:</p>
+                    <ul class="about-list">
+                        <li>Indywidualne podejście do każdego klienta</li>
+                        <li>Tworzenie spersonalizowanych planów żywieniowych</li>
+                        <li>Edukację w zakresie zdrowych nawyków żywieniowych</li>
+                        <li>Wsparcie w procesie długoterminowej zmiany</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" 
+                     alt="Profesjonalny Trener Odżywiania"
+                     loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Dodaj nową sekcję certyfikatów -->
+<section id="certifications" class="certifications-section">
+    <div class="container">
+        <div class="section-header">
+            <h2>Certyfikaty i Kwalifikacje</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="cert-grid">
+    <div class="cert-item" data-aos="fade-up">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🎓</i>
+            <div class="cert-icon-glow"></div>
+        </div>
+        <div class="cert-content">
+            <h4>Certyfikowany Dietetyk Kliniczny</h4>
+            <p>Międzynarodowy certyfikat dietetyki klinicznej z specjalizacją w zaburzeniach metabolicznych</p>
+            <div class="cert-details">
+                <span class="cert-date">2020</span>
+                <span class="cert-institution">Medical Nutrition Institute</span>
+            </div>
+            <div class="cert-skills">
+                <span>Dietetyka kliniczna</span>
+                <span>Metabolizm</span>
+                <span>Żywienie medyczne</span>
+            </div>
+        </div>
+        <div class="cert-badge">TOP</div>
+    </div>
+
+    <div class="cert-item" data-aos="fade-up" data-aos-delay="100">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🏃</i>
+            <div class="cert-icon-glow"></div>
+        </div>
+        <div class="cert-content">
+            <h4>Specjalista Żywienia Sportowego</h4>
+            <p>Certyfikacja w zakresie żywienia w sporcie i optymalizacji wydolności organizmu</p>
+            <div class="cert-details">
+                <span class="cert-date">2021</span>
+                <span class="cert-institution">Sports Nutrition Academy</span>
+            </div>
+            <div class="cert-skills">
+                <span>Żywienie sportowe</span>
+                <span>Suplementacja</span>
+                <span>Periodyzacja żywienia</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-item" data-aos="fade-up" data-aos-delay="200">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🌱</i>
+            <div class="cert-icon-glow"></div>
+            <div class="cert-badge">NEW</div>
+        </div>
+        <div class="cert-content">
+            <h4>Ekspert Żywienia Roślinnego</h4>
+            <p>Specjalistyczne szkolenie z zakresu planowania diet roślinnych i wegetariańskich</p>
+            <div class="cert-details">
+                <span class="cert-date">2023</span>
+                <span class="cert-institution">Plant-Based Nutrition Institute</span>
+            </div>
+            <div class="cert-skills">
+                <span>Diety roślinne</span>
+                <span>Wegetarianizm</span>
+                <span>Nutrigenomika</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-item" data-aos="fade-up" data-aos-delay="300">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🧬</i>
+            <div class="cert-icon-glow"></div>
+        </div>
+        <div class="cert-content">
+            <h4>Nutrigenomika i Medycyna Personalizowana</h4>
+            <p>Zaawansowane studia w zakresie wpływu genów na metabolizm i odżywianie</p>
+            <div class="cert-details">
+                <span class="cert-date">2022</span>
+                <span class="cert-institution">Genomic Medicine Institute</span>
+            </div>
+            <div class="cert-skills">
+                <span>Genetyka żywienia</span>
+                <span>Medycyna personalizowana</span>
+                <span>Metabolomika</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-item" data-aos="fade-up" data-aos-delay="400">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🤰</i>
+            <div class="cert-icon-glow"></div>
+        </div>
+        <div class="cert-content">
+            <h4>Specjalista Żywienia w Ciąży i Laktacji</h4>
+            <p>Certyfikat z zakresu żywienia kobiet w ciąży oraz podczas karmienia piersią</p>
+            <div class="cert-details">
+                <span class="cert-date">2022</span>
+                <span class="cert-institution">Maternal Health Institute</span>
+            </div>
+            <div class="cert-skills">
+                <span>Żywienie w ciąży</span>
+                <span>Laktacja</span>
+                <span>Suplementacja prenatalna</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="cert-item" data-aos="fade-up" data-aos-delay="500">
+        <div class="cert-icon-wrapper">
+            <i class="cert-icon">🧠</i>
+            <div class="cert-icon-glow"></div>
+        </div>
+        <div class="cert-content">
+            <h4>Psychodietetyka i Zaburzenia Odżywiania</h4>
+            <p>Specjalizacja w zakresie psychologii żywienia i terapii zaburzeń odżywiania</p>
+            <div class="cert-details">
+                <span class="cert-date">2023</span>
+                <span class="cert-institution">Psychology & Nutrition Academy</span>
+            </div>
+            <div class="cert-skills">
+                <span>Psychologia żywienia</span>
+                <span>Terapia zaburzeń</span>
+                <span>Coaching zdrowia</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</section>
+
+        <section id="offer">
+            <div class="container">
+                <h2>Oferta</h2>
+                <div class="offer-container">
+                    <div class="offer-item">
+                        <h3>Konsultacja wstępna</h3>
+                        <p>Indywidualna sesja, podczas której ocenimy Twoje obecne nawyki żywieniowe i ustalimy cele.</p>
+                    </div>
+                    <div class="offer-item">
+                        <h3>Plan żywieniowy</h3>
+                        <p>Spersonalizowany plan żywieniowy dostosowany do Twoich potrzeb i preferencji.</p>
+                    </div>
+                    <div class="offer-item">
+                        <h3>Coaching długoterminowy</h3>
+                        <p>Regularne spotkania i wsparcie w realizacji Twoich celów żywieniowych.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="transformations">
+            <div class="container">
+                <h2>Transformacje</h2>
+                <div class="transformation-gallery">
+                    <div class="transformation-item">
+                        <img src="https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg" alt="Transformacja 1">
+                    </div>
+                    <div class="transformation-item">
+                        <img src="https://cdn.pixabay.com/photo/2016/11/22/22/24/adult-1850925_1280.jpg" alt="Transformacja 2">
+                    </div>
+                    <div class="transformation-item">
+                        <img src="https://cdn.pixabay.com/photo/2017/04/27/08/29/man-2264825_1280.jpg" alt="Transformacja 3">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="methodology">
+            <div class="container">
+                <h2>Metodologia pracy</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <h3>Konsultacja wstępna</h3>
+                        <p>Ocena stanu zdrowia i ustalenie celów</p>
+                    </div>
+                    <div class="timeline-item right">
+                        <h3>Analiza nawyków</h3>
+                        <p>Dokładna analiza obecnych nawyków żywieniowych</p>
+                    </div>
+                    <div class="timeline-item left">
+                        <h3>Plan żywieniowy</h3>
+                        <p>Opracowanie spersonalizowanego planu</p>
+                    </div>
+                    <div class="timeline-item right">
+                        <h3>Wdrożenie i monitorowanie</h3>
+                        <p>Regularne spotkania i dostosowywanie planu</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bmi-calculator">
+            <div class="container">
+                <h2>Kalkulator BMI</h2>
+                <form id="bmi-form">
+                    <input type="number" name="height" placeholder="Wzrost (cm)" required>
+                    <input type="number" name="weight" placeholder="Waga (kg)" required>
+                    <button type="submit" class="cta-button">Oblicz</button>
+                </form>
+                <p id="bmi-result"></p>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Opinie klientów</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-item">
+                        <p>"Najlepszy trener odżywiania, z którym miałem przyjemność pracować!"</p>
+                        <p>- Jan Kowalski</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Dzięki spersonalizowanemu planowi żywieniowemu osiągnąłem swoje cele."</p>
+                        <p>- Anna Nowak</p>
+                    </div>
+                    <!-- ...additional testimonials... -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Umów konsultację</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Imię i nazwisko" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="tel" name="phone" placeholder="Telefon">
+                    <select name="service" required>
+                        <option value="">Wybierz usługę</option>
+                        <option value="consultation">Konsultacja wstępna</option>
+                        <option value="plan">Plan żywieniowy</option>
+                        <option value="coaching">Coaching długoterminowy</option>
+                    </select>
+                    <textarea name="message" placeholder="Twoja wiadomość" rows="5"></textarea>
+                    <button type="submit" class="cta-button">Wyślij</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 Profesjonalny Trener Odżywiania. Wszelkie prawa zastrzeżone.</p>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook">&#xf09a;</a>
+                <a href="#" aria-label="Instagram">&#xf16d;</a>
+                <a href="#" aria-label="LinkedIn">&#xf0e1;</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky navigation
+        window.onscroll = function() {stickyNav()};
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        function stickyNav() {
+            if (window.pageYOffset >= sticky) {
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const nav = document.querySelector('nav ul');
+        hamburger.addEventListener('click', () => {
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Animacje przy przewijaniu
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.offer-item, .timeline-item');
+            elements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                const isVisible = (rect.top <= window.innerHeight * 0.75) && (rect.bottom >= 0);
+                if (isVisible) {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Kalkulator BMI
+        const bmiCalculator = () => {
+            const form = document.getElementById('bmi-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const height = parseFloat(form.height.value) / 100;
+                const weight = parseFloat(form.weight.value);
+                const bmi = (weight / (height * height)).toFixed(2);
+                document.getElementById('bmi-result').textContent = `Twoje BMI: ${bmi}`;
+            });
+        };
+
+        // Animowane liczniki
+        const animateCounters = () => {
+            // Implementacja animowanych liczników
+        };
+
+        // Interaktywny slider z opiniami
+        const testimonialSlider = () => {
+            const slider = document.querySelector('.testimonial-slider');
+            let index = 0;
+            setInterval(() => {
+                const items = slider.querySelectorAll('.testimonial-item');
+                items[index].classList.remove('active');
+                index = (index + 1) % items.length;
+                items[index].classList.add('active');
+            }, 5000);
+        };
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            animateOnScroll();
+            bmiCalculator();
+            animateCounters();
+            testimonialSlider();
+        });
+
+        // Animate stats numbers
+        const animateStats = () => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                let current = 0;
+
+                const updateCount = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.floor(current) + (target === 98 ? '%' : '+');
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        stat.textContent = target + (target === 98 ? '%' : '+');
+                    }
+                };
+
+                updateCount();
+            });
+        };
+
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(animateStats, 1000);
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('#hero');
+            if (hero) {
+                hero.style.backgroundPositionY = -(scrolled * 0.5) + 'px';
+            }
+        });
+
+        // Zaktualizowany kod nawigacji
+
+        const navLinks = document.querySelector('nav ul');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-scroll');
+            } else {
+                nav.classList.remove('nav-scroll');
+            }
+        });
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Zamykanie menu po kliknięciu w link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Zamykanie menu po kliknięciu poza nim
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Poprawiona obsługa menu mobilnego
+        const navMenu = document.querySelector('nav ul');
+
+
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        }
+
+        hamburger.addEventListener('click', toggleMenu);
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Zamykanie menu po kliknięciu poza nim
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && navMenu.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Aktualizacja zachowania przy scrollowaniu
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(46, 125, 50, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(46, 125, 50, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+
+
+        // Wywołanie animacji po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(animateStats, 1000);
+        });
+    </script>
+</html>
+

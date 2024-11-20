@@ -1,0 +1,12 @@
+/* variables.css */
+:root {
+    --primary-green: #146B3A;
+    --light-green: #1B8047;
+    --hover-green: #0D4C29;
+    
+    /* Dodatkowe zmienne dla menu */
+    --navbar-height: 5rem;
+    --navbar-item-padding: 1.5rem;
+    --navbar-underline-height: 2px;
+    --navbar-underline-offset: 25px;
+}

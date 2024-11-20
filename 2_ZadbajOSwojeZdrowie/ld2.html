@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Anna Kowalska | Profesjonalny Dietetyk</title>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+        
+        <link rel="stylesheet" href="root.css">
+        <link rel="stylesheet" href="styles/navbar/navbar.css">
+        <link rel="stylesheet" href="styles/hero/hero.css">
+
+        <script src="js/animations.js"></script>
+        <script src="js/hero.js"></script>
+        <script src="js/layoutEffect.js"></script>
+        <script src="js/navbar.js"></script>
+    </head>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar is-fixed-top">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <div class="brand-content">
+                        <!-- Nowe logo związane z dietetyką -->
+                        <svg class="logo-svg" viewBox="0 0 24 24">
+                            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                        </svg>
+                        <span class="brand-name">Anna Kowalska</span>
+                    </div>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">Strona główna</a>
+                    <a class="navbar-item">O mnie</a>
+                    <a class="navbar-item">Oferta</a>
+                    <a class="navbar-item">Blog</a>
+                    <a class="navbar-item">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="columns is-gapless" style="margin: 0;">
+            <div class="column is-6 hero-left">
+                <div class="decorative-shape shape-1"></div>
+                <div class="decorative-shape shape-2"></div>
+                <div class="floating-dots dots-1"></div>
+                <div class="floating-dots dots-2"></div>
+                <div class="hero-content">
+                    <h1 class="hero-title opacity-0" id="hero-title">
+                        Zadbaj o swoje zdrowie
+                    </h1>
+                    <h2 class="hero-subtitle opacity-0" id="hero-subtitle">
+                        świadomie i profesjonalnie
+                    </h2>
+                    <p class="hero-text opacity-0" id="hero-text">
+                        Indywidualne podejście i profesjonalne doradztwo dietetyczne.
+                        Wspólnie osiągniemy Twoje cele zdrowotne, stosując sprawdzone
+                        metody i najnowszą wiedzę z zakresu dietetyki.
+                    </p>
+                    <div class="hero-buttons opacity-0" id="hero-buttons">
+                        <button class="button is-primary">
+                            Umów konsultację
+                            <span class="icon ml-2">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </button>
+                        <button class="button is-outlined">
+                            Zobacz ofertę
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6 hero-right">
+                <!-- Background image is set in CSS -->
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">Scroll</span>
+            <span class="scroll-icon">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+        </div>
+    </section>
+
+
+</body>
+</html>

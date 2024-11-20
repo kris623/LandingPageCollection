@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElementalForce</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/elements.css">
+    <link rel="stylesheet" href="/css/animations.css">
+    <!-- Biblioteki zewnętrzne -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="nav-logo">ElementalForce</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Woda</a>
+                <a href="#" class="nav-link">Ogień</a>
+                <a href="#" class="nav-link">Lód</a>
+                <a href="#" class="nav-link">Powietrze</a>
+                <a href="#" class="nav-link">Ziemia</a>
+            </div>
+        </nav>
+
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Odkryj Potęgę Pięciu Żywiołów</h1>
+                <p>Zanurz się w świecie pierwotnych sił natury, gdzie każdy żywioł opowiada własną historię mocy i harmonii. Poznaj tajemnice starożytnej wiedzy o żywiołach i ich wpływie na świat wokół nas.</p>
+                <a href="#" class="cta-button">Rozpocznij Podróż</a>
+            </div>
+
+            <div class="elements-display">
+                <!-- Panele żywiołów zostaną wygenerowane przez JavaScript -->
+            </div>
+        </div>
+        <div class="mystic-network">
+            <canvas id="networkCanvas"></canvas>
+        </div>
+    </header>
+
+    <script src="js/config.js"></script>
+    <script src="js/particles-config.js"></script>
+    <script src="js/effects.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

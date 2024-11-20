@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anna Kowalska | Profesjonalny Dietetyk</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary-green: #146B3A;
+            --light-green: #1B8047;
+            --hover-green: #0D4C29;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            height: 5rem;
+            background-color: white !important;
+            border-bottom: 1px solid rgba(20, 107, 58, 0.1);
+        }
+
+        .navbar > .container {
+            height: 100%;
+        }
+
+        .navbar-brand {
+            align-items: center;
+        }
+
+        .brand-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+
+        .logo-svg {
+            width: 45px;
+            height: 45px;
+            fill: var(--primary-green);
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-item:hover .logo-svg {
+            transform: scale(1.05);
+        }
+
+        .brand-name {
+            color: var(--primary-green) !important;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .navbar-menu {
+            height: 5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-end {
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-end .navbar-item {
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            color: var(--primary-green) !important;
+            font-weight: 500;
+            padding: 0 1.5rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-end .navbar-item:hover {
+            background-color: transparent;
+            color: var(--light-green) !important;
+        }
+
+        .navbar-end .navbar-item::after {
+            content: '';
+            position: absolute;
+            bottom: calc(50% - 25px);
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+            transform-origin: right;
+        }
+
+        .navbar-end .navbar-item:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, white, #f5f5f5);
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .hero-left {
+            padding: 8rem 4rem;
+            background-color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-green), var(--light-green));
+        }
+
+        .hero-right {
+            position: relative;
+            min-height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        .hero-right::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(20, 107, 58, 0.1), rgba(80, 150, 111, 0.2));
+        }
+
+        .hero-title {
+            color: #2C3E50;
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            position: relative;
+            font-weight: 800;
+            background: linear-gradient(45deg, #2C3E50, var(--primary-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 80px;
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+            border-radius: 3px;
+        }
+
+        .hero-subtitle {
+            color: var(--primary-green);
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text {
+            color: #5D6D7E;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 3rem;
+        }
+
+        .button.is-primary {
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            padding: 1.5rem 2.5rem;
+            height: auto;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(20, 107, 58, 0.2);
+            border: none;
+        }
+        .button.is-primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 6px 20px rgba(20, 107, 58, 0.3);
+        }
+        .button.is-outlined {
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+            padding: 1.5rem 2.5rem;
+            height: auto;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        .button.is-outlined:hover {
+            background: linear-gradient(45deg, var(--primary-green), var(--light-green));
+            color: white;
+            transform: translateY(-2px) scale(1.02);
+            border-color: transparent;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--primary-green);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .scroll-indicator:hover {
+            opacity: 1;
+        }
+
+        .scroll-text {
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+    </style>
+
+<style>
+    /* Previous styles remain the same */
+
+    /* Mobile menu styles */
+    @media screen and (max-width: 1023px) {
+        .navbar-menu {
+            position: absolute;
+            width: 100%;
+            top: 5rem;
+            left: 0;
+            background: white;
+            padding: 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        .navbar-menu.is-active {
+            display: block;
+        }
+
+        .navbar-end {
+            flex-direction: column;
+            height: auto;
+        }
+
+        .navbar-end .navbar-item {
+            height: auto;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .navbar-end .navbar-item::after {
+            bottom: 0;
+        }
+    }
+
+    .navbar-burger {
+        height: 5rem;
+        width: 5rem;
+        color: var(--primary-green);
+    }
+
+    .navbar-burger:hover {
+        background-color: transparent;
+    }
+</style>
+
+<style>
+    /* Previous styles remain the same */
+
+    @media screen and (max-width: 768px) {
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            overflow: visible;
+        }
+
+        .columns.is-gapless {
+            margin: 0 !important;
+            min-height: 100vh;
+        }
+
+        .column {
+            padding: 0 !important;
+        }
+
+        .hero-left {
+            padding: 7rem 1.5rem 4rem 1.5rem;
+            min-height: 100vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+
+        .hero-content {
+            padding: 0;
+            max-width: 100%;
+            overflow: visible;
+        }
+
+        .hero-title {
+            font-size: 2.75rem;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+        }
+
+        .button {
+            width: 100%;
+            white-space: normal;
+            height: auto;
+            padding: 1.25rem 2rem;
+        }
+
+        .hero-right {
+            position: fixed !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            clip-path: none;
+            z-index: -1;
+        }
+
+        .scroll-indicator {
+            bottom: 1rem;
+        }
+
+        .container {
+            padding: 0 1rem;
+        }
+
+        .navbar {
+            padding: 0 1rem;
+        }
+    }
+
+    /* Fix for very small screens */
+    @media screen and (max-width: 350px) {
+        .hero-title {
+            font-size: 2.25rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+        }
+
+        .button {
+            padding: 1rem 1.5rem;
+        }
+    }
+</style>
+
+</head>
+<body>
+    <nav class="navbar is-fixed-top">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="#">
+                    <div class="brand-content">
+                        <svg class="logo-svg" viewBox="0 0 24 24">
+                            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z"/>
+                        </svg>
+                        <span class="brand-name">Anna Kowalska</span>
+                    </div>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+
+            <div id="navbarMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    <a class="navbar-item">Strona główna</a>
+                    <a class="navbar-item">O mnie</a>
+                    <a class="navbar-item">Oferta</a>
+                    <a class="navbar-item">Blog</a>
+                    <a class="navbar-item">Kontakt</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="columns is-gapless" style="margin: 0;">
+            <div class="column is-6 hero-left">
+                <div class="hero-content">
+                    <h1 class="hero-title opacity-0" id="hero-title">
+                        Zadbaj o swoje zdrowie
+                    </h1>
+                    <h2 class="hero-subtitle opacity-0" id="hero-subtitle">
+                        świadomie i profesjonalnie
+                    </h2>
+                    <p class="hero-text opacity-0" id="hero-text">
+                        Indywidualne podejście i profesjonalne doradztwo dietetyczne.
+                        Wspólnie osiągniemy Twoje cele zdrowotne, stosując sprawdzone
+                        metody i najnowszą wiedzę z zakresu dietetyki.
+                    </p>
+                    <div class="hero-buttons opacity-0" id="hero-buttons">
+                        <button class="button is-primary">
+                            Umów konsultację
+                            <span class="icon ml-2">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </button>
+                        <button class="button is-outlined">
+                            Zobacz ofertę
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6 hero-right">
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <span class="scroll-text">Więcej informacji</span>
+            <span class="scroll-icon">
+                <i class="fas fa-chevron-down"></i>
+            </span>
+        </div>
+    </section>
+    <script>
+        // Improved mobile menu toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('.navbar-menu');
+            
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                const isClickInside = burger.contains(e.target) || menu.contains(e.target);
+                if (!isClickInside && menu.classList.contains('is-active')) {
+                    burger.classList.remove('is-active');
+                    menu.classList.remove('is-active');
+                }
+            });
+
+            // Close menu when clicking a link
+            const menuItems = menu.querySelectorAll('.navbar-item');
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    burger.classList.remove('is-active');
+                    menu.classList.remove('is-active');
+                });
+            });
+        });
+
+        // Rest of the scripts remain the same
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+            if ($navbarBurgers.length > 0) {
+                $navbarBurgers.forEach(el => {
+                    el.addEventListener('click', () => {
+                        const target = el.dataset.target;
+                        const $target = document.getElementById(target);
+                        el.classList.toggle('is-active');
+                        $target.classList.toggle('is-active');
+                    });
+                });
+            }
+        });
+
+        //Efekt pojawiania sie
+        const tl = gsap.timeline();
+
+        tl.from(".navbar", {
+            duration: 1,
+            y: -100,
+            opacity: 0,
+            ease: "power4.out"
+        })
+        .from(".hero-title", {
+            duration: 1,
+            y: 50,
+            opacity: 0,
+            ease: "power3.out"
+        })
+        .from(".hero-subtitle", {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: "power3.out"
+        }, "-=0.5")
+        .from(".hero-text", {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: "power3.out"
+        }, "-=0.5")
+        .from(".hero-buttons", {
+            duration: 1,
+            y: 30,
+            opacity: 0,
+            ease: "power3.out"
+        }, "-=0.5")
+        .from(".floating-dots, .decorative-shape", {
+            duration: 1.5,
+            scale: 0,
+            opacity: 0,
+            stagger: 0.2,
+            ease: "elastic.out(1, 0.5)"
+        }, "-=1")
+        .from(".scroll-indicator", {
+            duration: 1,
+            opacity: 0,
+            y: 20,
+            ease: "power2.out"
+        }, "-=0.5");
+
+
+
+
+
+
+
+        
+        document.querySelector('.scroll-indicator').addEventListener('click', () => {
+            const nextSection = document.querySelector('.hero').nextElementSibling;
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        const buttons = document.querySelectorAll('.button');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', (e) => {
+                gsap.to(button, {
+                    scale: 1.05,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+
+            button.addEventListener('mouseleave', (e) => {
+                gsap.to(button, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power2.out"
+                });
+            });
+        });
+    </script>
+</body>
+</html>

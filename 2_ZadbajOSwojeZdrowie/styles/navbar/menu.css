@@ -1,0 +1,66 @@
+/* navbar/menu.css */
+
+/* Podstawowa struktura menu */
+.navbar-menu {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-end {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* Style dla elementów menu - zwiększona specyficzność */
+.navbar-end .navbar-item {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    color: var(--primary-green) !important; /* Wymuszenie koloru */
+    font-weight: 500;
+    padding: 0 1.5rem;
+    position: relative;
+    transition: color 0.3s ease;
+    text-decoration: none; /* Zapobieganie domyślnemu podkreśleniu */
+}
+
+/* Efekt hover */
+.navbar-end .navbar-item:hover {
+    background-color: transparent;
+    color: var(--light-green) !important;
+}
+
+/* Podkreślenie - przeniesione z animations.css */
+.navbar-end .navbar-item::after {
+    content: '';
+    position: absolute;
+    bottom: calc(50% - 25px);
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-green), var(--light-green));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    transform-origin: right;
+    pointer-events: none; /* Zapobiega problemom z hover */
+}
+
+.navbar-end .navbar-item:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Aktywny element menu - opcjonalne */
+.navbar-end .navbar-item.is-active {
+    color: var(--primary-green) !important;
+    font-weight: 600;
+}
+
+/* Reset stylów dla linków */
+.navbar-end a.navbar-item {
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+}

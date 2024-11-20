@@ -1,0 +1,19 @@
+.navbar {
+    height: 5rem;
+    background-color: white !important;
+    border-bottom: 1px solid rgba(20, 107, 58, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+}
+
+.navbar.is-hidden {
+    transform: translateY(-100%);
+}
+
+.navbar > .container {
+    height: 100%;
+}

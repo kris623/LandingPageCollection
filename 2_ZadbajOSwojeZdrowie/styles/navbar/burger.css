@@ -1,0 +1,19 @@
+.navbar-burger {
+    height: 5rem;
+    width: 5rem;
+    position: relative;
+    margin-left: auto;
+    display: none;
+}
+
+.navbar-burger span {
+    height: 2px;
+    width: 24px;
+    left: calc(50% - 12px);
+    background-color: var(--primary-green);
+    transition: all 0.3s ease;
+}
+
+.navbar-burger span:nth-child(1) { top: calc(50% - 8px); }
+.navbar-burger span:nth-child(2) { top: calc(50%); }
+.navbar-burger span:nth-child(3) { top: calc(50% + 8px); }
