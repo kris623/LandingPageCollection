@@ -15,18 +15,18 @@
     <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
     
     <!-- Style CSS -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/navigation.css">
-    <link rel="stylesheet" href="css/hero.css">
-    <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/certifications.css">
-    <link rel="stylesheet" href="css/offer.css">
-    <link rel="stylesheet" href="css/methodology.css">
-    <link rel="stylesheet" href="css/transformation.css">
-    <link rel="stylesheet" href="css/contact.css">
-    <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="css/hero.css">
+    <link rel="stylesheet" type="text/css" href="css/about.css">
+    <link rel="stylesheet" type="text/css" href="css/certifications.css">
+    <link rel="stylesheet" type="text/css" href="css/offer.css">
+    <link rel="stylesheet" type="text/css" href="css/methodology.css">
+    <link rel="stylesheet" type="text/css" href="css/transformation.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/contact.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/footer.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
 </head>
 <body>
     <header>
@@ -61,21 +61,21 @@
                     </div>
                     <div class="hero-stats">
                         <div class="stat-item">
-                            <div class="stat-number" data-value="500">0</div>
+                            <div class="stat-number" data-value="500" data-prefix="+" data-duration="2000">0</div>
                             <div class="stat-label">Zadowolonych klientów</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" data-value="10">0</div>
+                            <div class="stat-number" data-value="10" data-prefix="+" data-duration="1500">0</div>
                             <div class="stat-label">Lat doświadczenia</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number" data-value="98">0</div>
+                            <div class="stat-number" data-value="98" data-suffix="%" data-duration="1800">0</div>
                             <div class="stat-label">Skuteczność</div>
                         </div>
                     </div>
                 </div>
                 <div class="hero-image-container">
-                    <img src="https://cdn.pixabay.com/photo/2017/01/29/21/16/nurse-2019420_1280.jpg" 
+                    <img src="https://cdn.pixabay.com/photo/2022/12/12/01/54/dietician-7649978_1280.png" 
                          alt="Profesjonalny Trener Odżywiania"
                          loading="eager">
                 </div>
@@ -102,9 +102,9 @@
                 </div>
             </div>
             <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b" 
+                <img src="https://cdn.pixabay.com/photo/2019/03/19/09/19/dietetics-4065158_1280.jpg" 
                      alt="Profesjonalny Trener Odżywiania"
-                     loading="lazy">
+                     loading="eager">
             </div>
         </div>
     </div>
@@ -272,7 +272,8 @@
         </div>
         <div class="transformation-gallery">
             <div class="transformation-item">
-                <img src="https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg" alt="Transformacja 1" class="transformation-image">
+                <img src="https://cdn.pixabay.com/photo/2017/08/07/14/02/people-2604149_1280.jpg" alt="Transformacja Anna" class="transformation-image">
+                <div class="glow-effect"></div>
                 <div class="transformation-overlay">
                     <h3 class="transformation-title">Anna, 32 lata</h3>
                     <div class="transformation-stats">
@@ -285,10 +286,59 @@
                             <span class="stat-label">Miesiące</span>
                         </div>
                     </div>
+                    <div class="transformation-progress">
+                        <div class="progress-value" style="--progress-value: 85%"></div>
+                    </div>
+                    <span class="time-period">Program 3-miesięczny</span>
                     <p class="transformation-details">"Program zmienił moje podejście do żywienia. Nauczyłam się zdrowych nawyków, które stosuje do dziś."</p>
                 </div>
             </div>
-            <!-- Similar structure for other transformation items -->
+
+            <div class="transformation-item">
+                <img src="https://cdn.pixabay.com/photo/2017/08/07/14/02/man-2604149_1280.jpg" alt="Transformacja Marek" class="transformation-image">
+                <div class="glow-effect"></div>
+                <div class="transformation-overlay">
+                    <h3 class="transformation-title">Marek, 45 lat</h3>
+                    <div class="transformation-stats">
+                        <div class="transformation-stat">
+                            <span class="stat-value">-20kg</span>
+                            <span class="stat-label">Utrata wagi</span>
+                        </div>
+                        <div class="transformation-stat">
+                            <span class="stat-value">6</span>
+                            <span class="stat-label">Miesięcy</span>
+                        </div>
+                    </div>
+                    <div class="transformation-progress">
+                        <div class="progress-value" style="--progress-value: 85%"></div>
+                    </div>
+                    <span class="time-period">Program 3-miesięczny</span>
+                    <p class="transformation-details">"Po latach walki z nadwagą wreszcie znalazłem skuteczne rozwiązanie. Czuję się świetnie!"</p>
+                </div>
+            </div>
+
+            <div class="transformation-item">
+                <img src="https://cdn.pixabay.com/photo/2017/08/07/14/02/fitness-2604149_1280.jpg" alt="Transformacja Karolina" class="transformation-image">
+                <div class="glow-effect"></div>
+                <div class="transformation-overlay">
+                    <h3 class="transformation-title">Karolina, 28 lat</h3>
+                    <div class="transformation-stats">
+                        <div class="transformation-stat">
+                            <span class="stat-value">+8kg</span>
+                            <span class="stat-label">Przyrost masy</span>
+                        </div>
+                        <div class="transformation-stat">
+                            <span class="stat-value">4</span>
+                            <span class="stat-label">Miesiące</span>
+                        </div>
+                    </div>
+                    <div class="transformation-progress">
+                        <div class="progress-value" style="--progress-value: 85%"></div>
+                    </div>
+                    <span class="time-period">Program 3-miesięczny</span>
+                    <p class="transformation-details">"Dzięki odpowiedniemu odżywianiu udało mi się zbudować zdrową masę mięśniową i poprawić sylwetkę."</p>
+                </div>
+            </div>
         </div>
         <div class="transformation-cta">
             <a href="#contact" class="transformation-button">Rozpocznij swoją transformację</a>
@@ -314,7 +364,7 @@
                         <p>Opracowanie spersonalizowanego planu</p>
                     </div>
                     <div class="timeline-item right">
-                        <h3>Wdrożenie i monitorowanie</h3>
+                        <h3>Wdrożenie i monitorowanie</h>
                         <p>Regularne spotkania i dostosowywanie planu</p>
                     </div>
                 </div>
@@ -370,11 +420,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script defer src="js/navigation.js"></script>
-    <script defer src="js/animations.js"></script>
-    <script defer src="js/calculator.js"></script>
-    <script defer src="js/slider.js"></script>
-    <script defer src="js/main.js"></script>
+    <script type="text/javascript" src="js/navigation.js"></script>
+    <script type="text/javascript" src="js/animations.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script>
 </body>
-</html> 
+</html>
 
