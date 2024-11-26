@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     const transformationItems = document.querySelectorAll('.transformation-item');
 
@@ -17,28 +16,42 @@ document.addEventListener('DOMContentLoaded', () => {
         window.requestAnimationFrame(step);
     }
 
-    // Efekt parallax dla zdjęć
+    // Enhanced parallax effect
     function setupParallax(item) {
         const image = item.querySelector('.transformation-image');
+        let isHovering = false;
+        let timeout;
+
         item.addEventListener('mousemove', (e) => {
+            if (!isHovering) return;
             const { left, top, width, height } = item.getBoundingClientRect();
             const x = (e.clientX - left) / width - 0.5;
             const y = (e.clientY - top) / height - 0.5;
             
-            image.style.transform = `
-                scale(1.1)
-                translate(${x * 10}px, ${y * 10}px)
-                rotateX(${y * -10}deg)
-                rotateY(${x * 10}deg)
-            `;
+            requestAnimationFrame(() => {
+                image.style.transform = `
+                    scale(1.1)
+                    translate(${x * 10}px, ${y * 10}px)
+                    rotateX(${y * -10}deg)
+                    rotateY(${x * 10}deg)
+                `;
+            });
+        });
+
+        item.addEventListener('mouseenter', () => {
+            isHovering = true;
+            clearTimeout(timeout);
         });
 
         item.addEventListener('mouseleave', () => {
-            image.style.transform = 'scale(1) translate(0, 0) rotateX(0) rotateY(0)';
+            isHovering = false;
+            timeout = setTimeout(() => {
+                image.style.transform = 'scale(1) translate(0, 0) rotateX(0) rotateY(0)';
+            }, 100);
         });
     }
 
-    // Porównywanie zdjęć przed/po
+    // Enhanced comparison slider
     function setupComparisonSlider(item) {
         const slider = document.createElement('div');
         slider.className = 'comparison-slider';
@@ -46,29 +59,45 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="before-image"></div>
             <div class="slider-handle"></div>
         `;
-        item.appendChild(slider);
-
+        
+        // Initialize slider at 50%
+        slider.style.setProperty('--position', '50%');
+        
+        // Add smooth drag functionality
         const handle = slider.querySelector('.slider-handle');
         let isResizing = false;
 
-        handle.addEventListener('mousedown', (e) => {
+        const startResize = (e) => {
             isResizing = true;
             e.preventDefault();
-        });
+        };
 
-        document.addEventListener('mousemove', (e) => {
+        const stopResize = () => {
+            isResizing = false;
+        };
+
+        const resize = (e) => {
             if (!isResizing) return;
             
             const sliderRect = slider.getBoundingClientRect();
             const position = (e.clientX - sliderRect.left) / sliderRect.width;
             const restrictedPos = Math.max(0, Math.min(1, position));
             
-            slider.style.setProperty('--position', `${restrictedPos * 100}%`);
-        });
+            requestAnimationFrame(() => {
+                slider.style.setProperty('--position', `${restrictedPos * 100}%`);
+            });
+        };
 
-        document.addEventListener('mouseup', () => {
-            isResizing = false;
-        });
+        handle.addEventListener('mousedown', startResize);
+        document.addEventListener('mousemove', resize);
+        document.addEventListener('mouseup', stopResize);
+        
+        // Touch support
+        handle.addEventListener('touchstart', startResize);
+        document.addEventListener('touchmove', (e) => resize(e.touches[0]));
+        document.addEventListener('touchend', stopResize);
+
+        item.appendChild(slider);
     }
 
     // Inicjalizacja wszystkich efektów
@@ -76,19 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
         setupParallax(item);
         setupComparisonSlider(item);
         
-        // Animacja statystyk przy wejściu w viewport
+        // Add intersection observer for animations
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const stats = item.querySelectorAll('.stat-value');
-                    stats.forEach(stat => {
-                        const value = parseInt(stat.dataset.value);
-                        animateValue(stat, 0, value, 2000);
-                    });
+                    item.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.5 });
+        }, { threshold: 0.2 });
 
         observer.observe(item);
     });
