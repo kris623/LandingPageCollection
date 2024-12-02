@@ -27,6 +27,13 @@ footer::before {
     gap: 3rem;
 }
 
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
 /* Footer Column Styles */
 .footer-column {
     display: flex;
@@ -92,7 +99,7 @@ footer::before {
 }
 
 .quick-links li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .quick-links a {
@@ -102,21 +109,27 @@ footer::before {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
+    position: relative;
+    padding-left: 1.5rem;
 }
 
 .quick-links a:hover {
     color: #4CAF50;
     transform: translateX(5px);
+    padding-left: 2rem;
 }
 
 .quick-links a::before {
     content: '→';
     opacity: 0;
     transition: opacity 0.3s ease;
+    position: absolute;
+    left: 0;
 }
 
 .quick-links a:hover::before {
     opacity: 1;
+    left: 0.5rem;
 }
 
 /* Newsletter Form */
@@ -132,19 +145,20 @@ footer::before {
     line-height: 1.6;
 }
 
-.form-group {
+.newsletter-form .form-group {
+    position: relative;
     display: flex;
     gap: 0.5rem;
 }
 
 .newsletter-input {
     flex: 1;
-    padding: 0.8rem 1.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 25px;
+    padding: 1rem 1.5rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 30px;
     background: rgba(255, 255, 255, 0.05);
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
@@ -163,11 +177,13 @@ footer::before {
     cursor: pointer;
     font-weight: 600;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
 .newsletter-button:hover {
     background: #45a049;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Social Media */
@@ -175,6 +191,8 @@ footer::before {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
 }
 
 .social-link {
@@ -193,6 +211,7 @@ footer::before {
 .social-link:hover {
     background: #4CAF50;
     transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Bottom Bar */
@@ -217,12 +236,23 @@ footer::before {
     }
 }
 
+@media (max-width: 1024px) {
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     footer {
         padding: 3rem 0 1.5rem;
     }
 
     .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
@@ -252,6 +282,11 @@ footer::before {
         flex-direction: column;
     }
 
+    .newsletter-form .form-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
     .newsletter-button {
         width: 100%;
     }
@@ -263,8 +298,19 @@ footer::before {
     to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .footer-column {
-    animation: fadeIn 0.6s ease-out forwards;
+    animation: fadeInUp 0.6s ease-out forwards;
     opacity: 0;
 }
 
