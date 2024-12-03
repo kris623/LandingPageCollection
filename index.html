@@ -1,0 +1,3680 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krystian - Landing Page Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        .containerCards {
+            /* max-width: 1200px; */
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: #0f172a;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            /* background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.85) 100%); */
+            .hero-overlay {
+                background: linear-gradient(45deg,
+                        rgba(238, 90, 36, 0.1),
+                        rgba(255, 159, 67, 0.1));
+                backdrop-filter: blur(4px);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            /* Zmiana na wyrównanie do lewej */
+            min-height: 100vh;
+            text-align: left;
+            /* Zmiana na wyrównanie do lewej */
+            color: white;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 800px;
+            /* Ograniczenie szerokości tekstu */
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            max-width: 600px;
+            /* Ograniczenie szerokości tekstu */
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            /* Zmiana na wyrównanie do lewej */
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .cta-main-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background-color: rgb(54 150 69 / 32%) !important;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: rgba(54, 150, 69, 0.85) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(54, 150, 69, 0.3);
+        }
+
+        .btn-secondary {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 159, 67, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 159, 67, 0.2);
+        }
+
+
+        .btn-tertiary {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .btn-tertiary::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .btn-tertiary:hover {
+            color: white;
+        }
+
+        .btn-tertiary:hover::after {
+            width: 100%;
+        }
+
+        .btn-primary:hover,
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dodanie kontenera dla lepszego rozmieszczenia */
+        .hero-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+            /* Większy padding na bokach */
+        }
+
+
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, rgb(54, 150, 69), rgb(45, 130, 60));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(rgba(37, 99, 235, 0.9), rgba(30, 64, 175, 0.95));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Packages */
+        .packages {
+            padding: 5rem 0;
+            background: var(--light);
+        }
+
+        .packages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .package-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .package-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--primary-alpha-25);
+            border-color: var(--primary);
+        }
+
+        .package-card h3 {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .package-card .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .package-card ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .package-card ul li::before {
+            content: "✓";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+        }
+
+        /* Contact */
+        .contact {
+            padding: 5rem 0;
+            background: white;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 768px) {
+            .hero-container {
+                padding: 0 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-main-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                text-align: center;
+            }
+
+            .hero-cta {
+                width: 100%;
+            }
+
+        }
+    </style>
+
+
+    <style>
+        /* ... (poprzednie style) ... */
+
+        /* Nowe style dla badge'a */
+        .hero-badge {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            color: #fff;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            background-color: rgba(54, 150, 69, 0.15);
+            border: 1px solid rgba(54, 150, 69, 0.4);
+            height: 45px;
+        }
+
+        .hero-badge {
+            background-color: rgba(54, 150, 69, 0.15);
+            backdrop-filter: blur(8px);
+            transition:
+                background-color 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .hero-badge:hover {
+            background-color: rgba(54, 150, 69, 0.25);
+            border-color: rgba(45, 130, 60, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(54, 150, 69, 0.2);
+        }
+
+        .hero-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            transition: 0.5s;
+            animation: shine 4s infinite;
+        }
+
+
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            50% {
+                left: 100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+
+        .hero-badge-content {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .theme-toggle-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px;
+            background: transparent;
+            border-color: var(--primary-alpha-40);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle-badge:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+        }
+
+        .theme-toggle-badge svg {
+            width: 16px;
+            height: 16px;
+            color: var(--primary);
+        }
+
+        .hero-badge-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(45, 130, 60, 0.85);
+            border-radius: 50%;
+            font-size: 1rem;
+        }
+
+        .hero-badge-text {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hero-badge-dot {
+            width: 6px;
+            height: 6px;
+            background-color: rgba(45, 130, 60, 0.85);
+            border-radius: 50%;
+            animation: pulse 4s infinite;
+        }
+
+        .hero-badge:hover .hero-badge-dot {
+            background-color: rgba(54, 150, 69, 0.85);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.5);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+
+
+        @media (max-width: 768px) {
+            .hero-badge {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
+            }
+
+            .theme-toggle-badge {
+                padding: 4px;
+            }
+
+            .theme-toggle-badge svg {
+                width: 14px;
+                height: 14px;
+            }
+
+            .hero-badge-icon {
+                width: 20px;
+                height: 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.querySelector('.theme-toggle');
+    const navbar = document.querySelector('.navbar');
+    const navbarMenu = document.querySelector('.navbar-menu');
+    
+    let lastScrollTop = 0;
+    let isInNavbar = false;
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 1) {
+            if (!isInNavbar) {
+                themeToggle.classList.add('in-navbar');
+                themeToggle.classList.add('hide-fixed');
+                // Dodajemy przycisk na końcu menu
+                navbarMenu.appendChild(themeToggle);
+                isInNavbar = true;
+            }
+        } else {
+            if (isInNavbar) {
+                themeToggle.classList.remove('in-navbar');
+                themeToggle.classList.remove('hide-fixed');
+                document.body.appendChild(themeToggle);
+                isInNavbar = false;
+            }
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+});
+    </script>
+    <style>
+        /* ... (poprzednie style pozostają bez zmian) ... */
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 0.8rem 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+
+        .navbar-logo img {
+            height: 40px;
+            width: auto;
+            transition: transform 0.3s ease;
+            border-radius: 25%;
+        }
+
+        .navbar-logo:hover img {
+            transform: scale(1.05);
+        }
+
+
+        .navbar-logo span {
+            color: var(--primary);
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .navbar-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: rgba(54, 150, 69, 0.85);
+            transition: width 0.3s ease;
+        }
+
+        .navbar-link:hover::after {
+            width: 100%;
+        }
+
+        .navbar-cta {
+            padding: 0.5rem 1rem;
+            background-color: rgba(54, 150, 69, 0.85) !important;
+            backdrop-filter: blur(8px);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+
+        .navbar-cta:hover {
+            background-color: rgba(45, 130, 60, 0.85) !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(54, 150, 69, 0.3);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+
+
+        /* Ukrycie przycisku X w wersji desktopowej */
+        .mobile-menu-close {
+            display: none;
+            /* Domyślnie ukryty */
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .navbar-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: rgba(15, 23, 42, 0.95);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                padding: 2rem;
+            }
+
+            .navbar-menu.active {
+                right: 0;
+            }
+
+            .mobile-menu-close {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: transparent;
+                border: none;
+                color: rgba(255, 159, 67, 0.85);
+                font-size: 24px;
+                cursor: pointer;
+                padding: 8px;
+                transition: all 0.3s ease;
+            }
+
+            .mobile-menu-close:hover {
+                color: rgba(238, 90, 36, 0.85);
+                transform: rotate(90deg);
+            }
+
+            .navbar-logo img {
+                height: 32px;
+            }
+        }
+    </style>
+    <style>
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 12px;
+    border-radius: 50%;
+    background: var(--primary-alpha-15);
+    border: 1px solid var(--primary-alpha-40);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 1;
+    visibility: visible;
+}
+.theme-toggle.in-navbar {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    background: var(--primary-alpha-15);
+}
+
+@media (max-width: 768px) {
+    .theme-toggle.in-navbar {
+        margin: 2rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .theme-toggle {
+        padding: 10px;
+    }
+    
+    .theme-toggle.in-navbar {
+        margin-right: 60px; /* Space for mobile menu button */
+    }
+}
+
+        .theme-green .theme-toggle:hover {
+            background: rgba(54, 150, 69, 0.15);
+            border-color: rgba(54, 150, 69, 0.4);
+        }
+
+        .theme-orange .theme-toggle:hover {
+            background: rgba(255, 159, 67, 0.15);
+            border-color: rgba(255, 159, 67, 0.4);
+        }
+
+        /* Zielony motyw */
+        .theme-green {
+            --primary: rgb(34 237 122);
+            --primary-dark: rgb(45, 130, 60);
+            --primary-alpha-85: rgba(54, 150, 69, 0.85);
+            --primary-alpha-25: rgba(54, 150, 69, 0.25);
+            --primary-alpha-15: rgba(54, 150, 69, 0.15);
+            --primary-alpha-40: rgba(54, 150, 69, 0.4);
+
+            --bg-color: #0f172a;
+            --bg-color-alt: #1a1a1a;
+            --text-color: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+
+            --primary-transparent: rgba(40, 179, 100, 0.26);
+        }
+
+        /* Pomarańczowy motyw */
+        .theme-orange {
+            --primary: rgb(255, 159, 67);
+            --primary-dark: rgb(238, 90, 36);
+            --primary-alpha-85: rgba(255, 159, 67, 0.85);
+            --primary-alpha-25: rgba(255, 159, 67, 0.25);
+            --primary-alpha-15: linear-gradient(45deg, rgb(255 159 67 / 1%), rgb(238 90 36 / 21%));
+            --primary-alpha-40: rgba(255, 159, 67, 0.4);
+
+            --bg-color: #0f172a;
+            --bg-color-alt: #1a1a1a;
+            --text-color: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Turkusowy motyw */
+        .theme-turquoise {
+            --primary: rgb(0, 206, 201);
+            --primary-dark: rgb(0, 184, 148);
+            --primary-alpha-85: rgba(0, 206, 201, 0.85);
+            --primary-alpha-25: rgba(0, 206, 201, 0.25);
+            --primary-alpha-15: rgba(0, 206, 201, 0.15);
+            --primary-alpha-40: rgba(0, 206, 201, 0.4);
+
+            --bg-color: #0f172a;
+            --bg-color-alt: #1a1a1a;
+            --text-color: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Indygo - głęboki, luksusowy */
+        .theme-indigo {
+            --primary: rgb(99, 102, 241);
+            --primary-dark: rgb(79, 70, 229);
+            --primary-alpha-85: rgba(99, 102, 241, 0.85);
+            --primary-alpha-25: rgba(99, 102, 241, 0.25);
+            --primary-alpha-15: rgba(99, 102, 241, 0.15);
+            --primary-alpha-40: rgba(99, 102, 241, 0.4);
+
+            --bg-color: #0f172a;
+            --bg-color-alt: #1a1a1a;
+            --text-color: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Wspólne style używające zmiennych */
+        .navbar-cta {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark)) !important;
+            backdrop-filter: blur(8px);
+        }
+
+        .navbar-cta:hover {
+            background: linear-gradient(20deg, var(--primary), var(--primary-dark)) !important;
+            box-shadow: 0 4px 12px var(--primary-alpha-25);
+        }
+
+        .navbar-link:hover {
+            color: var(--primary-alpha-85);
+        }
+
+        .navbar-link::after {
+            background-color: var(--primary-alpha-85);
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark)) !important;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark)) !important;
+            opacity: 0.9;
+            box-shadow: 0 4px 12px var(--primary-alpha-25);
+        }
+
+        .btn-secondary {
+            /* color: var(--primary-alpha-85); */
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-alpha-15);
+            box-shadow: 0 4px 12px var(--primary-alpha-25);
+        }
+
+        .hero-badge {
+
+            background: var(--primary-alpha-15);
+            border: 1px solid var(--primary-alpha-40);
+        }
+
+        .hero-badge-icon {
+            background: var(--primary-alpha-15);
+            border: 1px solid var(--primary-alpha-40);
+        }
+
+        .hero-badge:hover {
+            background: var(--primary-alpha-25);
+            border-color: var(--primary-dark);
+            box-shadow: 0 4px 12px var(--primary-alpha-25);
+        }
+
+        .hero-badge-dot {
+            background-color: var(--primary-dark);
+        }
+
+        .hero-badge:hover .hero-badge-dot {
+            background-color: var(--primary);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+
+        /* Pakiety */
+        .package-card {
+            border: 1px solid var(--primary-alpha-25);
+        }
+
+        .package-card:hover {
+            border-color: var(--primary);
+        }
+
+        .price {
+            color: var(--primary);
+        }
+
+        /* Formularz kontaktowy */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-group select:focus {
+            border-color: var(--primary);
+        }
+
+        /* Przycisk zmiany motywu */
+        .theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    margin: 0;
+    padding: 12px;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background: var(--primary-alpha-15);
+    border: 1px solid var(--primary-alpha-40);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--primary-alpha-25);
+}
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+
+    
+    .theme-toggle svg {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+        /* Ukrywamy/pokazujemy odpowiednie ikony w zależności od motywu */
+        .theme-orange .theme-icon-sun {
+            display: none;
+        }
+
+        .theme-green .theme-icon-moon {
+            display: none;
+        }
+
+        .theme-icon-sun,
+        .theme-icon-moon,
+        .theme-icon-water,
+        .theme-icon-star {
+            width: 20px;
+            height: 20px;
+            display: none;
+        }
+
+        .theme-orange .theme-icon-moon {
+            display: block;
+        }
+
+        .theme-green .theme-icon-sun {
+            display: block;
+        }
+
+        .theme-turquoise .theme-icon-water {
+            display: block;
+        }
+
+        .theme-indigo .theme-icon-star {
+            display: block;
+        }
+
+        /* Mobile menu */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                background: var(--primary-alpha-15);
+                backdrop-filter: blur(12px);
+            }
+
+
+            .mobile-menu-close {
+                color: var(--primary);
+            }
+
+        }
+    </style>
+
+
+
+    <style>
+        /* Podstawowe style hero section */
+
+
+
+        .hero div h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 800px;
+            /* Ograniczenie szerokości tekstu */
+        }
+
+
+        /* Kontenery dla animacji */
+        .text-container,
+        .description-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-container {
+            /* min-height: 200px;  */
+            /* Dostosuj do wysokości twojego największego tekstu */
+        }
+
+        .description-container {
+            min-height: 100px;
+        }
+
+        /* Style dla wariantów tekstu */
+        .text-variant,
+        .description-variant {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+
+        /* Teksty */
+        .text-variant {
+            position: relative;
+            /* Zmiana z absolute na relative */
+            width: 100%;
+            font-size: 3.5rem;
+            line-height: 1.2;
+            font-weight: bold;
+            opacity: 1;
+            /* Start jako widoczny */
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .description-variant {
+            position: relative;
+            /* Zmiana z absolute na relative */
+            width: 100%;
+            font-size: 1.125rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            opacity: 1;
+            /* Start jako widoczny */
+        }
+
+
+        /* Aktywne stany */
+        .text-variant.active,
+        .description-variant.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Stany wyjścia */
+        .text-variant.fade-out,
+        .description-variant.fade-out {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Animacje */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-exit-active {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+
+        /* Media queries dla responsywności */
+        @media (max-width: 768px) {
+            .hero-heading h1 {
+                font-size: 2.5rem;
+            }
+
+            .text-variant {
+                font-size: 2.5rem;
+            }
+
+            .hero-description,
+            .description-variant {
+                font-size: 1rem;
+            }
+        }
+
+
+        /* Animacje dla fade-right i fade-up */
+        [data-aos="fade-right"] {
+            transform: translateX(-20px);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        [data-aos="fade-right"].aos-animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        [data-aos="fade-up"] {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+        }
+
+        [data-aos="fade-up"].aos-animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    </style>
+
+
+</head>
+
+<body class="theme-orange">
+
+    <nav class="navbar">
+        <div class="navbar-container">
+            <style>
+.logo-container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 2px;
+    background: linear-gradient(65deg, var(--primary), transparent);
+    border-radius: 8px;
+}
+
+.logo-container::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: 9px;
+    background: linear-gradient(0deg, var(--primary), transparent);
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.logo-container:hover {
+    background: linear-gradient(45deg, var(--primary), var(--primary-alpha-40));
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.logo-container:hover::before {
+    opacity: 0.5;
+}
+
+.theme-toggle-integrated {
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--primary-alpha-25);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.logo-container:hover .theme-toggle-integrated {
+    opacity: 1;
+    right: -20px;
+}
+
+.theme-toggle-integrated svg {
+    width: 16px;
+    height: 16px;
+    transition: all 0.5s ease;
+    /* background: var(--primary-alpha-25); */
+    color: var(--primary-alpha-40);
+}
+
+/* Efekt hover */
+.theme-toggle-integrated:hover {
+    background: var(--primary-alpha-25);
+    border-color: var(--primary);
+    transform: translateY(-50%) scale(1.25);
+    box-shadow: 0 0 15px var(--primary-alpha-25);
+}
+
+.theme-toggle-integrated:hover svg {
+    transform: rotate(45deg);
+    color: var(--primary);
+}
+
+/* Style dla różnych motywów */
+.theme-orange .theme-toggle-integrated {
+    background: rgba(255, 159, 67, 0.15);
+    border-color: rgba(255, 159, 67, 0.4);
+}
+
+.theme-green .theme-toggle-integrated {
+    background: rgba(54, 150, 69, 0.15);
+    border-color: rgba(54, 150, 69, 0.4);
+}
+
+.theme-turquoise .theme-toggle-integrated {
+    background: rgba(0, 206, 201, 0.15);
+    border-color: rgba(0, 206, 201, 0.4);
+}
+
+.theme-indigo .theme-toggle-integrated {
+    background: rgba(99, 102, 241, 0.15);
+    border-color: rgba(99, 102, 241, 0.4);
+}
+
+/* Hover efekty dla poszczególnych motywów */
+.theme-orange .theme-toggle-integrated:hover {
+    background: rgba(255, 159, 67, 0.25);
+    border-color: rgb(255, 159, 67);
+    box-shadow: 0 0 15px rgba(255, 159, 67, 0.25);
+}
+
+.theme-green .theme-toggle-integrated:hover {
+    background: rgba(54, 150, 69, 0.25);
+    border-color: rgb(54, 150, 69);
+    box-shadow: 0 0 15px rgba(54, 150, 69, 0.25);
+}
+
+.theme-turquoise .theme-toggle-integrated:hover {
+    background: rgba(0, 206, 201, 0.25);
+    border-color: rgb(0, 206, 201);
+    box-shadow: 0 0 15px rgba(0, 206, 201, 0.25);
+}
+
+.theme-indigo .theme-toggle-integrated:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: rgb(99, 102, 241);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+}
+
+@media (max-width: 768px) {
+    .theme-toggle-integrated {
+        right: 5px;
+        padding: 4px;
+    }
+    
+    .theme-toggle-integrated svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+            </style>
+            <a href="#" class="navbar-logo">
+                <div class="logo-container">
+                    <img src="logo_.webp" alt="Krystian - Landing Page Developer Logo" srcset="/api/placeholder/240/80 2x" width="220" height="40" loading="eager">
+                    <button onclick="toggleTheme()" class="theme-toggle-integrated" aria-label="Zmień motyw" style="left: 16px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                            <circle cx="12" cy="12" r="5" />
+                            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </button>
+                </div>
+                <p>LandCraft</p>
+            </a>
+
+            <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">
+                ☰
+            </button>
+            <div id="navbarMenu" class="navbar-menu" id="navbarMenu">
+                <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+                <a href="#" class="navbar-link">Start</a>
+                <a href="#packages" class="navbar-link">Pakiety</a>
+                <a href="#about" class="navbar-link">O mnie</a>
+                <a href="#process" class="navbar-link">Proces</a>
+                <a href="#contact" class="navbar-cta">Kontakt</a>
+                            <!-- Dodajemy przycisk przełączania motywów -->
+            <button onclick="toggleTheme()" class="theme-toggle" aria-label="Zmień motyw">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+            </button>
+
+            </div>
+        </div>
+    </nav>
+
+    <style>
+        
+        /* Progress Bar */
+        .progress-barTOP {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 6px;
+            background: linear-gradient(to right, #66b669, #b7c5cf);
+            z-index: 1000;
+            width: 0;
+            transition: width 0.3s ease;
+            border-radius: 30%;
+        }
+    </style>
+    <script>
+        // Portfolio Scripts
+        document.addEventListener('DOMContentLoaded', function () {
+            // Progress Bar
+            const progressBar = document.querySelector('.progress-barTOP');
+            window.addEventListener('scroll', () => {
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                const scrolled = window.scrollY;
+                const progress = (scrolled / documentHeight) * 100;
+                progressBar.style.width = `${progress}%`;
+            });
+        });
+    </script>
+    <div class="progress-barTOP"></div>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="wave12.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-right">
+                <div class="hero-badge-content">
+                    <!-- <div class="hero-badge-icon">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>
+                        </svg>
+                    </div> -->
+                    <button onclick="toggleTheme()" class="theme-toggle-badge" aria-label="Zmień motyw">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </button>
+                    <div class="hero-badge-text">
+                        <span>Fullstack Developer</span>
+                        <div class="hero-badge-dot"></div>
+                        <span>Designer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-transition-container">
+                <div class="text-transition active">
+                    <h1 data-aos="fade-right">
+                        Przekształcam wizje<br>
+                        w <span class="gradient-text">cyfrowy sukces</span>
+                    </h1>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="100">
+                        Łączę kreatywny design z skuteczną sprzedażą. Każdy projekt to przemyślana strategia, która
+                        pomaga Twojej marce się wyróżnić i osiągać cele.
+                    </p>
+                </div>
+            </div>
+
+            <div class="cta-main-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="#packages" class="btn-primary">Rozpocznij projekt</a>
+                <a href="#portfolio" class="btn-secondary">Zobacz realizacje</a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+<style>
+/* Style dla sekcji portfolio */
+/* Style dla sekcji portfolio */
+.portfolio-header {
+    text-align: left;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centruje badge */
+    gap: 20px;
+}
+
+.portfolio-title {
+    font-size: 4.5rem;
+    color: #0f172a;
+    font-weight: 900;
+    line-height: 1.1;
+    width: 100%; /* Zapewnia pełną szerokość dla wyrównania do lewej */
+}
+
+.section-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    background: var(--primary-alpha-15);
+    padding: 8px 30px;
+    border-radius: 50px;
+    color: var(--primary);
+    font-weight: 500;
+    margin: 0 auto;
+}
+
+.section-badge::before,
+.section-badge::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100px;
+    top: 50%; /* Wyrównuje linię do środka przycisku */
+    transform: translateY(-50%); /* Dokładne wycentrowanie w pionie */
+}
+
+.section-badge::before {
+    right: 100%;
+    margin-right: 15px;
+    background: linear-gradient(to left, var(--primary-alpha-40), transparent);
+}
+
+.section-badge::after {
+    left: 100%;
+    margin-left: 15px;
+    background: linear-gradient(to right, var(--primary-alpha-40), transparent);
+}
+
+.portfolio-subtitle {
+    width: 100%; /* Zapewnia pełną szerokość dla wyrównania do lewej */
+}
+
+</style>
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio-section">
+        <div class="containerCards">
+            <!-- Header -->
+            <div class="portfolio-header" data-aos="fade-up">
+                <h2 class="portfolio-title">Moje <span class="gradient-text">realizacje</span></h2>
+                <span class="section-badge">Portfolio</span>
+                <p class="portfolio-subtitle">Zobacz wybrane projekty landing page, które pomogły moim klientom osiągnąć
+                    ich cele biznesowe</p>
+            </div>
+
+            <div class="portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                <!-- Filters -->
+                <div class="portfolio-filters-wrapper">
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <span class="filter-text">Wszystkie</span>
+                            <span class="filter-count">12</span>
+                        </button>
+                        <button class="filter-btn" data-filter="business">
+                            <span class="filter-text">Biznesowe</span>
+                            <span class="filter-count">4</span>
+                        </button>
+                        <button class="filter-btn" data-filter="startup">
+                            <span class="filter-text">Startup</span>
+                            <span class="filter-count">3</span>
+                        </button>
+                        <button class="filter-btn" data-filter="ecommerce">
+                            <span class="filter-text">E-commerce</span>
+                            <span class="filter-count">5</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Carousel Container -->
+                <div class="portfolio-carousel-container">
+                    <div class="portfolio-carousel">
+                        <div class="portfolio-track">
+                            <!-- Single Portfolio Card -->
+
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="ld_1.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="portfolio-card" data-category="startup">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="id_2.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                            <article class="portfolio-card" data-category="ecommerce">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="id_5.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="id_4.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="id_4.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="id_4.png" alt="Project Name" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Financial Solutions</h3>
+                                                <p class="content-description">
+                                                    Innowacyjne rozwiązanie dla sektora finansowego
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TypeScript</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                </div>
+                                                <h3>Financial Solutions</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy konsultingowej, który zwiększył liczbę leadów
+                                                    o 150% w ciągu 3 miesięcy.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">150%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">12.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                            <!-- Repeat for other cards -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="carousel-navigation">
+                        <button class="nav-button prev" aria-label="Poprzednie">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M15 18l-6-6 6-6" />
+                            </svg>
+                        </button>
+                        <div class="carousel-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="slide-count">
+                                <span class="current">1</span>
+                                <span class="total">/ 12</span>
+                            </div>
+                        </div>
+                        <button class="nav-button next" aria-label="Następne">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M9 18l6-6-6-6" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <style>
+        /* Section Styles */
+        .portfolio-section {
+            padding: 100px 0;
+            background: #0f172a;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        /* Header Styles */
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(255, 159, 67, 0.1);
+            border: 1px solid var(--primary-alpha-25);
+            border-radius: 20px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .portfolio-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .portfolio-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Filters */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            margin-bottom: 40px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-count {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 24px;
+            height: 24px;
+            padding: 0 8px;
+            background: rgba(255, 159, 67, 0.1);
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: var(--primary);
+        }
+
+        .filter-btn.active {
+            background: rgba(255, 159, 67, 0.1);
+            color: var(--primary);
+        }
+
+        /* Carousel Layout */
+        .portfolio-carousel-container {
+            position: relative;
+            overflow: visible;
+            margin: 0;
+            width: 100%;
+        }
+
+        .portfolio-carousel {
+            position: relative;
+            overflow: visible;
+            padding: 0 60px;
+            /* Dopasuj do szerokości przycisków */
+        }
+
+        /* Dodaj strefy hover dla nawigacji */
+        .portfolio-carousel::before,
+        .portfolio-carousel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 2;
+            pointer-events: none;
+            /* Początkowo wyłącz interakcję */
+        }
+
+
+
+
+        .portfolio-carousel {
+            overflow: visible;
+            padding: 0 50px;
+            margin: 0 -20px;
+        }
+
+
+        /* .portfolio-card {
+    flex: 0 0 calc(33.333% - 30px);
+    opacity: 1;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+} */
+
+        /* Style dla aktywnych kart */
+        .portfolio-card.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Style dla nieaktywnych kart */
+        .portfolio-card:not(.active) {
+            opacity: 0.3;
+            transform: scale(0.95);
+        }
+
+        /* Hover effects */
+        .portfolio-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            z-index: 2;
+        }
+
+        /* Popraw widoczność kart na krawędziach */
+        .portfolio-carousel {
+            overflow: visible;
+            padding: 0 100px;
+            /* Większy padding dla stref hover */
+            margin: 0 -20px;
+            /* Skompensuj większe marginesy kart */
+        }
+
+
+
+        /* Card Styles - Poprawiony układ */
+        .portfolio-card {
+            flex: 0 0 calc(33.333% - 40px);
+            /* Zwiększony odstęp */
+            height: 600px;
+            /* Większa wysokość */
+            perspective: 2000px;
+            margin: 20px;
+            /* Większy margines */
+            position: relative;
+        }
+
+        .card-inner {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        .portfolio-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+
+
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            background: var(--bg-color-alt, #1a1a1a);
+        }
+
+        .card-front {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 24px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.2),
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        }
+
+
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            transform: rotateY(180deg);
+            border-radius: 24px;
+            padding: 35px;
+            background: var(--bg-color-alt);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.2),
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        .back-content {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .portfolio-image {
+            position: relative;
+            width: 100%;
+            height: 65%;
+            overflow: hidden;
+        }
+
+        .portfolio-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    transparent 50%,
+                    rgba(0, 0, 0, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.05);
+            transition: transform 0.8s cubic-bezier(0.45, 0, 0.55, 1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom,
+                    rgba(0, 0, 0, 0.2),
+                    rgba(0, 0, 0, 0.8));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            color: #fff;
+        }
+
+        .portfolio-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .content-header {
+            margin-bottom: 15px;
+        }
+
+        .card-content {
+            padding: 25px;
+            height: 35%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: linear-gradient(180deg,
+                    var(--bg-color-alt) 0%,
+                    rgba(26, 26, 26, 0.8) 100%);
+        }
+
+        /* Navigation Styles */
+        .carousel-navigation {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: 40px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-button {
+            width: 48px;
+            height: 48px;
+            border: 1px solid var(--primary-alpha-40);
+            background: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .nav-button:not(:disabled):hover {
+            background: var(--primary-alpha-15);
+            transform: translateY(-2px);
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 159, 67, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-button svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+        }
+
+        .carousel-progress {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 4px;
+            background: var(--primary-alpha-15);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        .slide-count {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            min-width: 60px;
+            text-align: right;
+        }
+
+        .current {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+    </style>
+    <!-- Dodatkowe style do animacji -->
+    <style>
+        /* Card Transition Styles */
+        .portfolio-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-card.active {
+            transform: scale(1.02);
+            z-index: 2;
+        }
+
+        /* Hover Effects */
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Animation Classes */
+        .fade-enter {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .fade-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        .fade-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-exit-active {
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+
+        /* Enhanced Navigation Styles */
+        .nav-button {
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .nav-button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 159, 67, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+
+        .nav-button:hover::after {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Progress Bar Animation */
+        @keyframes progress {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: var(--progress-width);
+            }
+        }
+
+        .progress-fill {
+            animation: progress 0.3s ease-out forwards;
+        }
+
+        /* Card Flip Animation Enhancement */
+        .card-inner {
+            width: 400px;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-front,
+        .card-back {
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Filter Button Enhancement */
+        .filter-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .filter-btn:hover::after,
+        .filter-btn.active::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* Additional Card Styles */
+        .tech-stack {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .tech-tag {
+            padding: 6px 12px;
+            background: var(--primary-alpha-15);
+            border: 1px solid var(--primary-alpha-40);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .tech-tag:hover {
+            background: var(--primary-alpha-40);
+            transform: translateY(-2px);
+        }
+
+        .project-details h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .project-description {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .project-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            margin-bottom: 30px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+
+        /* .stat-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+} */
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+
+        .view-project-btn {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 16px;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-project-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent);
+            transition: 0.5s;
+        }
+
+        .view-project-btn:hover::before {
+            left: 100%;
+        }
+
+        .view-project-btn:hover {
+            transform: translateY(-3px);
+            box-shadow:
+                0 5px 15px rgba(var(--primary), 0.3),
+                0 10px 30px rgba(var(--primary), 0.2);
+        }
+
+        /* Hover Effects */
+        .portfolio-card:hover .portfolio-image img {
+            transform: scale(1.15);
+        }
+
+        .portfolio-card:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-card:hover .portfolio-image::after {
+            opacity: 1;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Card Loading Animation */
+        .portfolio-card.loading::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.1),
+                    transparent);
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+
+
+
+        /* Project Category Badge */
+        .project-category {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px;
+            background: var(--primary-alpha-15);
+            border: 1px solid var(--primary-alpha-40);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .project-category svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .content-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.7));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .content-description {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 1200px) {
+            .portfolio-card {
+                flex: 0 0 calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .portfolio-card {
+                flex: 0 0 100%;
+                height: 500px;
+            }
+
+            .carousel-navigation {
+                flex-wrap: wrap;
+            }
+
+            .project-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-progress {
+                order: -1;
+                width: 100%;
+                padding: 0;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <style>
+        .hover-zone {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            z-index: 3;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(var(--primary), 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .hover-zone-left {
+            left: 0;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+        }
+
+        .hover-zone-right {
+            right: 0;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+        }
+
+
+        /* Strzałka nawigacyjna jako osobny element */
+        .nav-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary-alpha-40);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .nav-arrow svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            color: var(--bg-color);
+        }
+
+        /* Strzałki nawigacyjne */
+
+
+        .hover-zone-left::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 18l-6-6 6-6' stroke='%23fff'/%3E%3C/svg%3E");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hover-zone-right::after {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M9 18l6-6-6-6' stroke='%23fff'/%3E%3C/svg%3E");
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hover-zone:hover {
+            background-color: rgba(var(--primary), 0.1);
+        }
+
+        .hover-zone:hover .nav-arrow {
+            transform: scale(1.1);
+            background: var(--primary-alpha-85);
+        }
+
+        .hover-zone:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
+            background: var(--primary-alpha-85);
+        }
+
+        .hover-zone.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(var(--primary), 0.02);
+        }
+
+        /* Upewnij się, że karty są widoczne */
+        .portfolio-carousel {
+            overflow: visible;
+            padding: 0 50px;
+            /* Dodaj padding dla stref hover */
+        }
+
+
+
+
+        .portfolio-card {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.3;
+            transform: scale(0.95);
+        }
+
+        .portfolio-card.active {
+            opacity: 1;
+            transform: scale(1);
+            z-index: 2;
+        }
+
+        /* Popraw widoczność kart */
+        .portfolio-track {
+            display: flex;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 20px 0;
+            margin: 0;
+            z-index: 2;
+        }
+
+        /* Style dla nieaktywnych kart */
+        .portfolio-card:not(.active) {
+            pointer-events: none;
+        }
+
+        /* Style dla aktywnych kart */
+        .portfolio-card.active {
+            pointer-events: auto;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .hover-zone:not(.disabled)::after {
+            animation: pulse 2s infinite;
+        }
+
+        .hover-zone:not(.disabled) .nav-arrow {
+            animation: pulse 2s infinite;
+        }
+
+        /* Dodatkowe style dla lepszej widoczności */
+        .nav-arrow {
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-arrow svg {
+            filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.1));
+        }
+
+        .hover-zone:hover .nav-arrow {
+            box-shadow: 0 4px 15px rgba(var(--primary), 0.2);
+        }
+
+        .hover-zone.disabled .nav-arrow {
+            box-shadow: none;
+        }
+        
+    </style>
+
+    <script>
+        class EnhancedPortfolioCarousel {
+            constructor() {
+                this.init();
+                this.bindEvents();
+                this.initializeAOS();
+                this.setupNavigationHover();
+            }
+
+            setupNavigationHover() {
+                const container = this.track.closest('.portfolio-carousel-container');
+
+                // Utwórz lewy przycisk ze strzałką
+                const leftZone = document.createElement('div');
+                leftZone.className = 'hover-zone hover-zone-left';
+                const leftArrow = document.createElement('div');
+                leftArrow.className = 'nav-arrow';
+                leftArrow.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6"/>
+        </svg>
+    `;
+                leftZone.appendChild(leftArrow);
+
+                // Utwórz prawy przycisk ze strzałką
+                const rightZone = document.createElement('div');
+                rightZone.className = 'hover-zone hover-zone-right';
+                const rightArrow = document.createElement('div');
+                rightArrow.className = 'nav-arrow';
+                rightArrow.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6"/>
+        </svg>
+    `;
+                rightZone.appendChild(rightArrow);
+
+                // Dodaj obsługę kliknięć
+                leftZone.addEventListener('click', () => {
+                    if (this.currentIndex > 0 && !leftZone.classList.contains('disabled')) {
+                        this.navigateWithAnimation('prev');
+                    }
+                });
+
+                rightZone.addEventListener('click', () => {
+                    const maxIndex = this.totalCards - this.cardsPerView;
+                    if (this.currentIndex < maxIndex && !rightZone.classList.contains('disabled')) {
+                        this.navigateWithAnimation('next');
+                    }
+                });
+
+                container.appendChild(leftZone);
+                container.appendChild(rightZone);
+
+                // Początkowa aktualizacja stanu
+                this.updateHoverZonesVisibility(leftZone, rightZone);
+            }
+
+            updateHoverZonesVisibility(leftZone, rightZone) {
+                const maxIndex = this.totalCards - this.cardsPerView;
+
+                if (this.currentIndex <= 0) {
+                    leftZone.style.opacity = '0';
+                    leftZone.style.pointerEvents = 'none';
+                } else {
+                    leftZone.style.opacity = '1';
+                    leftZone.style.pointerEvents = 'auto';
+                }
+
+                if (this.currentIndex >= maxIndex) {
+                    rightZone.style.opacity = '0';
+                    rightZone.style.pointerEvents = 'none';
+                } else {
+                    rightZone.style.opacity = '1';
+                    rightZone.style.pointerEvents = 'auto';
+                }
+            }
+
+            init() {
+                // Core elements
+                this.track = document.querySelector('.portfolio-track');
+                this.cards = Array.from(document.querySelectorAll('.portfolio-card'));
+                this.prevBtn = document.querySelector('.nav-button.prev');
+                this.nextBtn = document.querySelector('.nav-button.next');
+                this.progressFill = document.querySelector('.progress-fill');
+                this.currentSlide = document.querySelector('.current');
+                this.totalSlides = document.querySelector('.total');
+                this.filterBtns = document.querySelectorAll('.filter-btn');
+
+                // State
+                this.currentIndex = 0;
+                this.cardsPerView = this.getCardsPerView();
+                this.totalCards = this.cards.length;
+                this.isDragging = false;
+                this.startPos = 0;
+                this.currentTranslate = 0;
+                this.prevTranslate = 0;
+                this.animationID = 0;
+                this.isAnimating = false;
+
+                // Initialize carousel state
+                this.initializeState();
+            }
+
+            initializeState() {
+                const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+                // Filtruj widoczne karty
+                this.cards.forEach(card => {
+                    const category = card.dataset.category;
+                    const shouldShow = currentFilter === 'all' || category === currentFilter;
+
+                    if (shouldShow) {
+                        card.style.display = 'block';
+                        if (this.cards.indexOf(card) < this.cardsPerView) {
+                            card.classList.add('active');
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                        }
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('active');
+                    }
+                });
+
+                // Ustaw początkowe wartości
+                this.totalSlides.textContent = `/ ${this.cards.length}`;
+                this.currentSlide.textContent = this.currentIndex + 1;
+                this.updateNavigationState();
+                this.updateCarousel(false);
+            }
+
+            initializeAOS() {
+                // Initialize AOS with custom settings
+                AOS.init({
+                    duration: 800,
+                    offset: 100,
+                    once: true,
+                    easing: 'ease-out-cubic'
+                });
+            }
+
+            bindEvents() {
+                // Navigation buttons
+                this.prevBtn.addEventListener('click', () => this.navigateWithAnimation('prev'));
+                this.nextBtn.addEventListener('click', () => this.navigateWithAnimation('next'));
+
+                // Filter buttons
+                this.filterBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => this.handleFilter(e));
+                });
+
+                // Touch events
+                this.bindTouchEvents();
+
+                // Mouse events
+                this.bindMouseEvents();
+
+                // Keyboard navigation
+                this.bindKeyboardEvents();
+
+                // Resize handling
+                this.bindResizeEvents();
+            }
+
+            bindTouchEvents() {
+                this.track.addEventListener('touchstart', (e) => {
+                    this.handleDragStart(e.touches[0].clientX);
+                    this.track.style.cursor = 'grabbing';
+                }, { passive: true });
+
+                this.track.addEventListener('touchmove', (e) => {
+                    if (this.isDragging) {
+                        this.handleDragMove(e.touches[0].clientX);
+                    }
+                }, { passive: true });
+
+                this.track.addEventListener('touchend', () => this.handleDragEnd());
+            }
+
+            bindMouseEvents() {
+                this.track.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    this.handleDragStart(e.clientX);
+                    this.track.style.cursor = 'grabbing';
+                });
+
+                this.track.addEventListener('mousemove', (e) => {
+                    if (this.isDragging) {
+                        this.handleDragMove(e.clientX);
+                    }
+                });
+
+                this.track.addEventListener('mouseup', () => this.handleDragEnd());
+                this.track.addEventListener('mouseleave', () => this.handleDragEnd());
+            }
+
+            bindKeyboardEvents() {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        this.navigateWithAnimation('prev');
+                    } else if (e.key === 'ArrowRight') {
+                        this.navigateWithAnimation('next');
+                    }
+                });
+            }
+
+            bindResizeEvents() {
+                let resizeTimer;
+                window.addEventListener('resize', () => {
+                    clearTimeout(resizeTimer);
+                    resizeTimer = setTimeout(() => {
+                        const newCardsPerView = this.getCardsPerView();
+                        if (newCardsPerView !== this.cardsPerView) {
+                            this.cardsPerView = newCardsPerView;
+                            this.updateCarousel(false);
+                        }
+                    }, 250);
+                });
+            }
+
+            getCardsPerView() {
+                if (window.innerWidth > 1200) return 3;
+                if (window.innerWidth > 768) return 2;
+                return 1;
+            }
+
+            handleDragStart(clientX) {
+                this.isDragging = true;
+                this.startPos = clientX;
+                this.animationID = requestAnimationFrame(this.animation.bind(this));
+            }
+
+            handleDragMove(clientX) {
+                if (!this.isDragging) return;
+
+                const currentPosition = clientX;
+                const diff = currentPosition - this.startPos;
+
+                // Oblicz maksymalne przesunięcie
+                const cardWidth = this.track.offsetWidth / this.cardsPerView;
+                const maxTranslate = -(cardWidth * (this.totalCards - this.cardsPerView));
+
+                // Zastosuj limity
+                this.currentTranslate = Math.max(
+                    Math.min(this.prevTranslate + diff, 0),
+                    maxTranslate
+                );
+
+                // Aktualizuj pozycję
+                requestAnimationFrame(() => {
+                    this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+                });
+            }
+            handleDragEnd() {
+                if (!this.isDragging) return;
+
+                this.isDragging = false;
+                cancelAnimationFrame(this.animationID);
+
+                const movedBy = this.currentTranslate - this.prevTranslate;
+                const threshold = this.track.offsetWidth * 0.2;
+                const maxIndex = this.totalCards - this.cardsPerView;
+
+                if (Math.abs(movedBy) > threshold) {
+                    if (movedBy < 0 && this.currentIndex < maxIndex) {
+                        this.currentIndex++;
+                    } else if (movedBy > 0 && this.currentIndex > 0) {
+                        this.currentIndex--;
+                    }
+                }
+
+                // Upewnij się, że currentIndex jest w prawidłowym zakresie
+                this.currentIndex = Math.min(Math.max(0, this.currentIndex), maxIndex);
+
+                this.updateCarousel(true);
+                this.track.style.cursor = 'grab';
+            }
+
+            snapToClosest() {
+                const cardWidth = this.track.offsetWidth / this.cardsPerView;
+                const closest = Math.round(this.currentTranslate / cardWidth) * cardWidth;
+                this.currentIndex = Math.abs(Math.round(closest / cardWidth));
+                this.updateCarousel();
+            }
+
+            navigateWithAnimation(direction) {
+                if (this.isAnimating) return;
+
+                const visibleCards = this.cards.filter(card => {
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    return currentFilter === 'all' || card.dataset.category === currentFilter;
+                });
+
+                const maxIndex = Math.max(0, visibleCards.length - this.cardsPerView);
+
+                if (direction === 'prev' && this.currentIndex > 0) {
+                    this.currentIndex--;
+                } else if (direction === 'next' && this.currentIndex < maxIndex) {
+                    this.currentIndex++;
+                }
+
+                this.isAnimating = true;
+                this.updateCarousel();
+
+                setTimeout(() => {
+                    this.isAnimating = false;
+                }, 500);
+            }
+
+
+            animation() {
+                if (this.isDragging) {
+                    this.setSliderPosition();
+                    requestAnimationFrame(this.animation.bind(this));
+                }
+            }
+
+            setSliderPosition() {
+                this.track.style.transform = `translateX(${this.currentTranslate}px)`;
+            }
+
+            updateCarousel(animate = true) {
+                const visibleCards = this.cards.filter(card => {
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    return currentFilter === 'all' || card.dataset.category === currentFilter;
+                });
+
+                const maxIndex = Math.max(0, visibleCards.length - this.cardsPerView);
+                this.currentIndex = Math.min(this.currentIndex, maxIndex);
+
+                const translateX = -(this.currentIndex * (100 / this.cardsPerView));
+
+                this.track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)' : 'none';
+                this.track.style.transform = `translateX(${translateX}%)`;
+
+                this.updateCardStates();
+                this.updateNavigationState();
+                this.updateProgress();
+
+                // Aktualizacja stref hover
+                const leftZone = document.querySelector('.hover-zone-left');
+                const rightZone = document.querySelector('.hover-zone-right');
+                if (leftZone && rightZone) {
+                    this.updateHoverZonesVisibility(leftZone, rightZone);
+                }
+            }
+
+            updateCardStates() {
+                // Pobierz tylko widoczne karty
+                const visibleCards = this.cards.filter(card => {
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    return currentFilter === 'all' || card.dataset.category === currentFilter;
+                });
+
+                // Aktualizuj stan każdej karty
+                visibleCards.forEach((card, index) => {
+                    const position = index - this.currentIndex;
+                    const isVisible = position >= 0 && position < this.cardsPerView;
+
+                    // Usuń wszystkie klasy aktywności
+                    card.classList.remove('active');
+
+                    if (isVisible) {
+                        card.classList.add('active');
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                        card.style.zIndex = '2';
+                    } else {
+                        card.classList.remove('active');
+                        card.style.opacity = '0.3';
+                        card.style.transform = 'scale(0.95)';
+                        card.style.zIndex = '1';
+                    }
+
+                    // Włącz interakcję dla wszystkich kart
+                    card.style.pointerEvents = 'auto';
+                });
+            }
+
+            updateNavigationState() {
+                // Uzyskaj aktualnie widoczne karty
+                const visibleCards = this.cards.filter(card => {
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    return currentFilter === 'all' || card.dataset.category === currentFilter;
+                });
+
+                // Oblicz rzeczywisty maksymalny indeks
+                const maxIndex = Math.max(0, visibleCards.length - this.cardsPerView);
+
+                // Aktualizuj stan przycisków
+                this.prevBtn.disabled = this.currentIndex <= 0;
+                this.nextBtn.disabled = this.currentIndex >= maxIndex;
+
+                this.prevBtn.style.opacity = this.currentIndex <= 0 ? '0.5' : '1';
+                this.nextBtn.style.opacity = this.currentIndex >= maxIndex ? '0.5' : '1';
+
+                // Aktualizuj licznik slajdów
+                this.currentSlide.textContent = Math.min(this.currentIndex + 1, visibleCards.length);
+                this.totalSlides.textContent = `/ ${visibleCards.length}`;
+            }
+
+            updateProgress() {
+                const visibleCards = this.cards.filter(card => {
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    return currentFilter === 'all' || card.dataset.category === currentFilter;
+                });
+
+                const maxIndex = Math.max(0, visibleCards.length - this.cardsPerView);
+                const progress = ((this.currentIndex) / maxIndex) * 100;
+
+                this.progressFill.style.width = `${Math.min(progress, 100)}%`;
+            }
+
+
+            handleFilter(e) {
+                const filterBtn = e.target.closest('.filter-btn');
+                if (!filterBtn) return;
+
+                const filter = filterBtn.dataset.filter;
+
+                // Aktualizuj aktywny filtr
+                this.filterBtns.forEach(btn => {
+                    btn.classList.toggle('active', btn === filterBtn);
+                });
+
+                // Resetuj pozycję
+                this.currentIndex = 0;
+
+                // Najpierw ukryj wszystkie karty
+                this.cards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9)';
+                    card.classList.remove('active');
+                });
+
+                // Po małym opóźnieniu pokaż odpowiednie karty
+                setTimeout(() => {
+                    this.cards.forEach(card => {
+                        const category = card.dataset.category;
+                        const shouldShow = filter === 'all' || category === filter;
+
+                        if (shouldShow) {
+                            card.style.display = 'block';
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1)';
+                            // Dodaj klasę active dla pierwszych kart
+                            if (this.cards.indexOf(card) < this.cardsPerView) {
+                                card.classList.add('active');
+                            }
+                        } else {
+                            card.style.display = 'none';
+                            card.classList.remove('active');
+                        }
+                    });
+
+                    // Aktualizuj karuzelę
+                    this.updateCarousel(true);
+                    this.updateCardStates();
+                }, 300);
+            }
+
+
+        }
+
+        // Initialize on DOM load
+        document.addEventListener('DOMContentLoaded', () => {
+            new EnhancedPortfolioCarousel();
+        });
+    </script>
+<style>
+
+
+
+    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="packages">
+        <div class="container">
+            <h2 class="text-center" data-aos="fade-up">Pakiety</h2>
+            <div class="packages-grid">
+                <!-- Start-Up Essential -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Start-Up Essential</h3>
+                    <div class="price">2000-3000 zł</div>
+                    <ul>
+                        <li>Indywidualnie dostosowany szablon HTML5</li>
+                        <li>Responsywny design</li>
+                        <li>Proste animacje CSS</li>
+                        <li>Hosting na 1 rok</li>
+                        <li>Domena z roczną rejestracją</li>
+                        <li>Podstawowy certyfikat SSL</li>
+                    </ul>
+                    <a href="#contact" class="btn">Zamów</a>
+                </div>
+
+                <!-- Business Growth -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Business Growth</h3>
+                    <div class="price">3500-5000 zł</div>
+                    <ul>
+                        <li>Landing page oparty na Bootstrap 5</li>
+                        <li>Zaawansowany responsywny design</li>
+                        <li>Nowoczesne animacje scroll-reveal</li>
+                        <li>Hosting SSD</li>
+                        <li>Certyfikat SSL Let's Encrypt</li>
+                        <li>CDN (Content Delivery Network)</li>
+                    </ul>
+                    <a href="#contact" class="btn">Zamów</a>
+                </div>
+
+                <!-- Business Excellence -->
+                <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Business Excellence</h3>
+                    <div class="price">7500-10000 zł</div>
+                    <ul>
+                        <li>Unikalna identyfikacja wizualna</li>
+                        <li>Prototypowanie w Figma</li>
+                        <li>Animacje GSAP i efekty parallax</li>
+                        <li>Dedykowany hosting NVMe</li>
+                        <li>System CMS</li>
+                        <li>Integracje z CRM</li>
+                    </ul>
+                    <a href="#contact" class="btn">Zamów</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="text-center" data-aos="fade-up">Skontaktuj się</h2>
+            <form data-aos="fade-up" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Imię i nazwisko</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="package">Wybrany pakiet</label>
+                    <select id="package" required>
+                        <option value="">Wybierz pakiet</option>
+                        <option value="startup">Start-Up Essential</option>
+                        <option value="business">Business Growth</option>
+                        <option value="excellence">Business Excellence</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Wiadomość</label>
+                    <textarea id="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn">Wyślij</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krystian - Landing Page Developer. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+
+
+    <script>
+        const texts = [
+            {
+                heading: 'Przekształcam wizje<br>w <span class="gradient-text">cyfrowy sukces</span>',
+                description: 'Łączę kreatywny design z skuteczną sprzedażą. Każdy projekt to przemyślana strategia, która pomaga Twojej marce się wyróżnić i osiągać cele.'
+            },
+            {
+                heading: 'Tworzę landing page<br>które <span class="gradient-text">sprzedają</span>',
+                description: 'Projektuję strony z myślą o konwersji i zwrocie z inwestycji. Twój sukces to mój priorytet w każdym elemencie designu.'
+            },
+            {
+                heading: 'Zamieniam Twoje cele<br>w <span class="gradient-text">realne wyniki</span>',
+                description: 'Wykorzystuję sprawdzone wzorce UX i techniki sprzedażowe. Tworzę landing page, które nie tylko wyglądają świetnie, ale przede wszystkim sprzedają.'
+            },
+            {
+
+                heading: 'Design który<br><span class="gradient-text">buduje biznes</span>',
+                description: 'Dostarczam więcej niż design - tworzę narzędzia sprzedażowe. Każdy element strony pracuje na sukces Twojego biznesu.'
+            }
+        ];
+
+        let currentVariant = 0;
+        let currentIndex = 0;
+        function changeHeroText() {
+            const heading = document.querySelector('.hero-content h1');
+            const description = document.querySelector('.hero-description');
+
+            // Usuń klasy AOS
+            heading.classList.remove('aos-animate');
+            description.classList.remove('aos-animate');
+
+            setTimeout(() => {
+                // Zmiana treści
+                currentIndex = (currentIndex + 1) % texts.length;
+                heading.innerHTML = texts[currentIndex].heading;
+                description.textContent = texts[currentIndex].description;
+
+                // Ponowne dodanie klas AOS dla animacji
+                requestAnimationFrame(() => {
+                    heading.classList.add('aos-animate');
+                    description.classList.add('aos-animate');
+                });
+            }, 300);
+        }
+
+        // Zmiana tekstu przy zmianie motywu
+        function toggleTheme() {
+            // Dotychczasowy kod zmiany motywu
+            const body = document.body;
+            const currentTheme = body.className.match(/theme-\w+/)?.[0] || 'theme-orange';
+            const themes = ['theme-green', 'theme-orange', 'theme-turquoise', 'theme-indigo'];
+            const currentIndex = themes.indexOf(currentTheme);
+            const nextIndex = (currentIndex + 1) % themes.length;
+
+            body.classList.remove(...themes);
+            body.classList.add(themes[nextIndex]);
+
+
+
+
+            // Dodaj zmianę tekstu
+            changeHeroText();
+            updateCarouselColors();
+        }
+
+
+        // Funkcja aktualizacji kolorów karuzeli
+        function updateCarouselColors() {
+            const root = document.documentElement;
+            const computedStyle = getComputedStyle(document.body);
+
+            const primary = computedStyle.getPropertyValue('--primary');
+            const primaryDark = computedStyle.getPropertyValue('--primary-dark');
+            const primaryAlpha85 = computedStyle.getPropertyValue('--primary-alpha-85');
+            const primaryAlpha40 = computedStyle.getPropertyValue('--primary-alpha-40');
+            const primaryAlpha15 = computedStyle.getPropertyValue('--primary-alpha-15');
+
+            root.style.setProperty('--primary', primary);
+            root.style.setProperty('--primary-dark', primaryDark);
+            root.style.setProperty('--primary-alpha-85', primaryAlpha85);
+            root.style.setProperty('--primary-alpha-40', primaryAlpha40);
+            root.style.setProperty('--primary-alpha-15', primaryAlpha15);
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sprawdź i ustaw początkowy motyw
+            const savedTheme = localStorage.getItem('theme') || 'theme-orange';
+            document.body.classList.add(savedTheme);
+            updateCarouselColors();
+        });
+
+    </script>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const navbarMenu = document.getElementById('navbarMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navbarMenu.classList.add('active');
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            navbarMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.navbar-link, .navbar-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                navbarMenu.classList.remove('active');
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbarMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                navbarMenu.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+    <script>
+        // Inicjalizacja AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Obsługa formularza kontaktowego
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Dziękujemy za wiadomość! Skontaktujemy się wkrótce.');
+            this.reset();
+        });
+
+        // Płynne przewijanie do sekcji
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
