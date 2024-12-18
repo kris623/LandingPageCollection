@@ -214,6 +214,28 @@ footer::before {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+.social-link i {
+    font-size: 1.2rem;
+}
+
+.social-link:hover i {
+    transform: scale(1.1);
+    transition: transform 0.3s ease;
+}
+
+/* Specific colors for each social media on hover */
+.social-link:hover .fa-facebook-f {
+    color: #1877f2;
+}
+
+.social-link:hover .fa-instagram {
+    color: #e4405f;
+}
+
+.social-link:hover .fa-linkedin-in {
+    color: #0077b5;
+}
+
 /* Bottom Bar */
 .footer-bottom {
     margin-top: 3rem;
