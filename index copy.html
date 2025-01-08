@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krystian - Landing Page Developer</title>
+
+    <!-- External CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
+    <!-- Internal CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <link rel="stylesheet" href="css/packages.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/themes.css">
+</head>
+
+<body class="theme-orange">
+    <!-- Progress Bar -->
+    <div class="progress-barTOP"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-logo">
+                <div class="logo-container">
+                    <img src="assets/images/logo_.webp" alt="Krystian - Landing Page Developer Logo"
+                        srcset="/api/placeholder/240/80 2x" width="220" height="40" loading="eager">
+                    <button onclick="toggleTheme()" class="theme-toggle-integrated" aria-label="Zmień motyw">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </button>
+                </div>
+                <p>LandCraft</p>
+            </a>
+
+            <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">☰</button>
+            <div id="navbarMenu" class="navbar-menu">
+                <button class="mobile-menu-close" id="mobileMenuClose">✕</button>
+                <a href="#" class="navbar-link">Start</a>
+                <a href="#packages" class="navbar-link">Pakiety</a>
+                <a href="#about" class="navbar-link">O mnie</a>
+                <a href="#process" class="navbar-link">Proces</a>
+                <a href="#contact" class="navbar-cta">Kontakt</a>
+                <button onclick="toggleTheme()" class="theme-toggle" aria-label="Zmień motyw">
+                    <!-- Theme toggle icons -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <path
+                            d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42">
+                        </path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="assets/videos/wave12.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge" data-aos="fade-right">
+                <div class="hero-badge-content">
+                    <button onclick="toggleTheme()" class="theme-toggle-badge" aria-label="Zmień motyw">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-sun">
+                            <circle cx="12" cy="12" r="5" />
+                            <path
+                                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-moon">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-water">
+                            <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-star">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </button>
+                    <div class="hero-badge-text">
+                        <span>Fullstack Developer</span>
+                        <div class="hero-badge-dot"></div>
+                        <span>Designer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="text-transition-container">
+                <div class="text-transition active">
+                    <h1 data-aos="fade-right">
+                        Przekształcam wizje<br>
+                        w <span class="gradient-text">cyfrowy sukces</span>
+                    </h1>
+                    <p class="hero-description" data-aos="fade-up" data-aos-delay="100">
+                        Łączę kreatywny design z skuteczną sprzedażą. Każdy projekt to przemyślana strategia, która
+                        pomaga Twojej marce się wyróżnić i osiągać cele.
+                    </p>
+                </div>
+            </div>
+            <div class="cta-main-buttons" data-aos="fade-up" data-aos-delay="200">
+                <a href="#packages" class="btn-primary">Rozpocznij projekt</a>
+                <a href="#portfolio" class="btn-secondary">Zobacz realizacje</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section portfolio-section">
+        <div class="containerCards">
+            <div class="portfolio-header" data-aos="fade-up">
+                <h2 class="portfolio-title">Moje <span class="gradient-text">realizacje</span></h2>
+                <span class="section-badge">Portfolio</span>
+                <p class="portfolio-subtitle">Zobacz wybrane projekty landing page, które pomogły moim klientom osiągnąć
+                    ich cele biznesowe</p>
+            </div>
+
+            <div class="portfolio-container" data-aos="fade-up" data-aos-delay="100">
+                <!-- Portfolio Filters -->
+                <div class="portfolio-filters-wrapper">
+                    <div class="portfolio-filters">
+                        <button class="filter-btn active" data-filter="all">
+                            <span class="filter-text">Wszystkie</span>
+                            <span class="filter-count">12</span>
+                        </button>
+                        <button class="filter-btn" data-filter="business">
+                            <span class="filter-text">Biznesowe</span>
+                            <span class="filter-count">4</span>
+                        </button>
+                        <button class="filter-btn" data-filter="startup">
+                            <span class="filter-text">Startup</span>
+                            <span class="filter-count">3</span>
+                        </button>
+                        <button class="filter-btn" data-filter="ecommerce">
+                            <span class="filter-text">E-commerce</span>
+                            <span class="filter-count">5</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Portfolio Carousel -->
+                <div class="portfolio-carousel-container">
+                    <div class="portfolio-carousel">
+                        <div class="portfolio-track">
+                            <!-- Landing Page dla Firmy Budowlanej -->
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="assets/images/ld_1.png" alt="Landing Page dla Firmy Budowlanej" loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Construction Pro</h3>
+                                                <p class="content-description">
+                                                    Landing page dla firmy budowlanej z nowoczesnym designem
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">React</span>
+                                                    <span class="tech-tag">TailwindCSS</span>
+                                                    <span class="tech-tag">GSAP</span>
+                                                </div>
+                                                <h3>Construction Pro</h3>
+                                                <p class="project-description">
+                                                    Landing page dla firmy budowlanej z interaktywnymi elementami i optymalizacją SEO.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">180%</span>
+                                                    <span class="stat-label">Więcej leadów</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">15.5%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Landing Page dla Architekta -->
+                            <article class="portfolio-card" data-category="business">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="assets/images/architect-landing.jpg" alt="Landing Page Architekta"
+                                                loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path
+                                                        d="M20 7L12 3L4 7M20 7L12 11M20 7V17L12 21M12 11L4 7M12 11V21M4 7V17L12 21" />
+                                                </svg>
+                                                <span>Business</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>Architect Vision</h3>
+                                                <p class="content-description">
+                                                    Minimalistyczna strona dla studia architektonicznego z portfolio
+                                                    projektów
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">Vue.js</span>
+                                                    <span class="tech-tag">SCSS</span>
+                                                    <span class="tech-tag">Anime.js</span>
+                                                </div>
+                                                <h3>Architect Vision</h3>
+                                                <p class="project-description">
+                                                    Elegancka strona z zaawansowanymi animacjami i interaktywnym
+                                                    portfolio. Zoptymalizowana pod urządzenia mobilne.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">200%</span>
+                                                    <span class="stat-label">Więcej zapytań</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">13.2%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <!-- Landing Page dla Startupu SaaS -->
+                            <article class="portfolio-card" data-category="startup">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <div class="portfolio-image">
+                                            <img src="assets/images/saas-landing.jpg" alt="Landing Page SaaS"
+                                                loading="lazy">
+                                            <div class="project-category">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2">
+                                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                                </svg>
+                                                <span>Startup</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="content-header">
+                                                <h3>SaaS Flow</h3>
+                                                <p class="content-description">
+                                                    Dynamiczna strona produktowa dla innowacyjnego rozwiązania SaaS
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <div class="back-content">
+                                            <div class="project-details">
+                                                <div class="tech-stack">
+                                                    <span class="tech-tag">Next.js</span>
+                                                    <span class="tech-tag">Framer Motion</span>
+                                                    <span class="tech-tag">Styled Components</span>
+                                                </div>
+                                                <h3>SaaS Flow</h3>
+                                                <p class="project-description">
+                                                    Konwersyjna strona produktowa z zaawansowanymi animacjami i
+                                                    integracją z systemem płatności Stripe.
+                                                </p>
+                                            </div>
+                                            <div class="project-stats">
+                                                <div class="stat">
+                                                    <span class="stat-value">250%</span>
+                                                    <span class="stat-label">Wzrost rejestracji</span>
+                                                </div>
+                                                <div class="stat">
+                                                    <span class="stat-value">18.7%</span>
+                                                    <span class="stat-label">Konwersja</span>
+                                                </div>
+                                            </div>
+                                            <button class="view-project-btn">
+                                                Zobacz szczegóły
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    stroke="currentColor">
+                                                    <path d="M5 12h14M12 5l7 7-7 7" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                            <!-- Carousel Navigation -->
+                            <!-- Portfolio Navigation -->
+                            <div class="carousel-navigation">
+                                <button class="nav-button prev" aria-label="Poprzednie">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M15 18l-6-6 6-6" />
+                                    </svg>
+                                </button>
+                                <div class="carousel-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill"></div>
+                                    </div>
+                                    <div class="slide-count">
+                                        <span class="current">1</span>
+                                        <span class="total">/ 12</span>
+                                    </div>
+                                </div>
+                                <button class="nav-button next" aria-label="Następne">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M9 18l6-6-6-6" />
+                                    </svg>
+                                </button>
+                            </div>
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Krystian - Landing Page Developer. Wszelkie prawa zastrzeżone.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/themes.js"></script>
+</body>
+
+</html>
