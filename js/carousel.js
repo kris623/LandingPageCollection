@@ -76,6 +76,16 @@ class EnhancedPortfolioCarousel {
 
     
     getCardsPerView() {
+        const containerWidth = this.track?.closest('.portfolio-carousel-container')?.offsetWidth || 0;
+        const cardWidth = this.cards[0]?.offsetWidth || 0;
+        const gap = 20; // gap między kartami
+
+        if (containerWidth && cardWidth) {
+            // Oblicz, ile kart zmieści się w kontenerze
+            return Math.floor((containerWidth + gap) / (cardWidth + gap));
+        }
+
+        // Fallback do poprzedniej logiki
         if (window.innerWidth > 1200) return 3;
         if (window.innerWidth > 768) return 2;
         return 1;
@@ -83,27 +93,30 @@ class EnhancedPortfolioCarousel {
 
     initializeState() {
         const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
-
-        // Filter visible cards
-        this.cards.forEach(card => {
+        const visibleCards = this.cards.filter(card => {
             const category = card.dataset.category;
-            const shouldShow = currentFilter === 'all' || category === currentFilter;
+            return currentFilter === 'all' || category === currentFilter;
+        });
 
-            if (shouldShow) {
-                card.style.display = 'block';
-                if (this.cards.indexOf(card) < this.cardsPerView) {
-                    card.classList.add('active');
-                    card.style.opacity = '1';
-                    card.style.transform = 'scale(1)';
-                }
-            } else {
-                card.style.display = 'none';
-                card.classList.remove('active');
+        // Sprawdź czy wszystkie karty się mieszczą
+        const allCardsVisible = visibleCards.length <= this.cardsPerView;
+
+        // Pokaż/ukryj nawigację
+        const navigationElement = document.querySelector('.carousel-navigation');
+        if (navigationElement) {
+            navigationElement.style.display = allCardsVisible ? 'none' : 'flex';
+        }
+
+        // Reszta inicjalizacji
+        visibleCards.forEach((card, index) => {
+            if (index < this.cardsPerView) {
+                card.classList.add('active');
+                card.style.opacity = '1';
+                card.style.transform = 'scale(1)';
             }
         });
 
-        // Set initial values
-        this.totalSlides.textContent = `/ ${this.cards.length}`;
+        this.totalSlides.textContent = `/ ${visibleCards.length}`;
         this.currentSlide.textContent = this.currentIndex + 1;
         this.updateNavigationState();
         this.updateCarousel(false);
@@ -307,34 +320,46 @@ class EnhancedPortfolioCarousel {
 updateNavigationState() {
     const visibleCards = this.getVisibleCards();
     const maxIndex = Math.max(0, visibleCards.length - this.cardsPerView);
-
-    // Update hover zones
-    const leftZone = document.querySelector('.hover-zone-left');
-    const rightZone = document.querySelector('.hover-zone-right');
-
-    if (leftZone) {
-        leftZone.classList.toggle('disabled', this.currentIndex <= 0);
-        leftZone.style.opacity = this.currentIndex <= 0 ? '0.5' : '1';
+    
+    // Sprawdź, czy wszystkie karty się mieszczą
+    const allCardsVisible = visibleCards.length <= this.cardsPerView;
+    
+    // Ukryj całą nawigację jeśli wszystkie karty się mieszczą
+    const navigationElement = document.querySelector('.carousel-navigation');
+    if (navigationElement) {
+        navigationElement.style.display = allCardsVisible ? 'none' : 'flex';
     }
 
-    if (rightZone) {
-        rightZone.classList.toggle('disabled', this.currentIndex >= maxIndex);
-        rightZone.style.opacity = this.currentIndex >= maxIndex ? '0.5' : '1';
-    }
+    // Zaktualizuj stan przycisków tylko jeśli nawigacja jest potrzebna
+    if (!allCardsVisible) {
+        // Update hover zones
+        const leftZone = document.querySelector('.hover-zone-left');
+        const rightZone = document.querySelector('.hover-zone-right');
 
-    // Update progress and counter
-    const progressFill = document.querySelector('.progress-fill');
-    const currentSlide = document.querySelector('.current');
-    const totalSlides = document.querySelector('.total');
+        if (leftZone) {
+            leftZone.classList.toggle('disabled', this.currentIndex <= 0);
+            leftZone.style.opacity = this.currentIndex <= 0 ? '0.5' : '1';
+        }
 
-    if (progressFill) {
-        const progress = (this.currentIndex / maxIndex) * 100;
-        progressFill.style.width = `${Math.min(progress, 100)}%`;
-    }
+        if (rightZone) {
+            rightZone.classList.toggle('disabled', this.currentIndex >= maxIndex);
+            rightZone.style.opacity = this.currentIndex >= maxIndex ? '0.5' : '1';
+        }
 
-    if (currentSlide && totalSlides) {
-        currentSlide.textContent = Math.min(this.currentIndex + 1, visibleCards.length);
-        totalSlides.textContent = `/ ${visibleCards.length}`;
+        // Update progress and counter
+        const progressFill = document.querySelector('.progress-fill');
+        const currentSlide = document.querySelector('.current');
+        const totalSlides = document.querySelector('.total');
+
+        if (progressFill) {
+            const progress = (this.currentIndex / maxIndex) * 100;
+            progressFill.style.width = `${Math.min(progress, 100)}%`;
+        }
+
+        if (currentSlide && totalSlides) {
+            currentSlide.textContent = Math.min(this.currentIndex + 1, visibleCards.length);
+            totalSlides.textContent = `/ ${visibleCards.length}`;
+        }
     }
 }
 

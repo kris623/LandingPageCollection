@@ -133,6 +133,7 @@
     display: flex;
     gap: 20px;
     transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    justify-content: center; /* Centruj karty gdy wszystkie są widoczne */
 }
 
 .card-inner {
@@ -352,6 +353,14 @@
     align-items: center;
     justify-content: center;
     gap: 20px;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.carousel-navigation[style*="display: none"] {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .nav-button {
